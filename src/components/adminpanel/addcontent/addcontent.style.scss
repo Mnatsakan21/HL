@@ -1,0 +1,37 @@
+.admin_add_contents_container{
+
+    >div>h2{
+        font-family: "NotoSansArmenian600";
+        font-size: 26px;
+        line-height: 80px;
+        letter-spacing: 0.01em;
+        color: #B31312;
+        padding-left: 20px;
+    }
+}
+
+
+.drop_down_container{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+
+.admin_url_container{
+    max-width: 895px;
+    input{
+        margin-top: 40px;
+        width: 100%;
+        font-family: "NotoSansArmenian";
+        font-size: 20px;
+        line-height: 60px;
+        letter-spacing: 0.01em;
+        padding-left: 24px;
+    }
+}
+
+.add_live_stream_input,.add_video_input{
+    border: 2px solid #2B2A4C;
+    background-color: #F0F5F9;
+}
