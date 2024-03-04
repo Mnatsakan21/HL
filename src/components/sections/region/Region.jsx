@@ -318,11 +318,11 @@ const Region = () => {
         const georgia = await axios.get('http://localhost:5005/api/v1/news/filter?countryId=3') 
         const iran = await axios.get('http://localhost:5005/api/v1/news/filter?countryId=4') 
         const azerbaijan = await axios.get('http://localhost:5005/api/v1/news/filter?countryId=5') 
-        setData(data.filter((data)=>data.countryId != 1))
-        setDataGeorgia(georgia.data)
-        setDataTurkey(turkey.data)
-        setDataIran(iran.data)
-        setDataAzerbaijan(azerbaijan.data)
+        setData(data.filter((data)=>data.countryId != 1 && data.countryId != 6 && data.newsContent.file.isImage))
+        setDataGeorgia(georgia.data.filter((data)=>data.newsContent.file.isImage))
+        setDataTurkey(turkey.data.filter((data)=>data.newsContent.file.isImage))
+        setDataIran(iran.data.filter((data)=>data.newsContent.file.isImage))
+        setDataAzerbaijan(azerbaijan.data.filter((data)=>data.newsContent.file.isImage))
       } catch (error) {
         console.log(error)
       }

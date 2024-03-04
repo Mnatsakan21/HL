@@ -1,6 +1,7 @@
 import "./singlepagebottom.style.scss"
 import SearchSlice from "../../search/searchslice/SearchSlice"
 import ManyViewsSlice from "./manyviewsslice/ManyViewsSlice"
+import { Link, NavLink } from "react-router-dom"
 
 const data = [
     {
@@ -41,14 +42,14 @@ const manyViewsData=[
     },
 ]
 
-const SinglePageBottom = () => {
+const SinglePageBottom = ({mostViewedNews,relatesNews}) => {
   return (
     <section className="single_page_bottom_container">
         <div className="will_like_container">
             <h3>Դուք կհավանեք</h3>
             <div>
-            {data.map((data,key)=>{
-         return <SearchSlice key={key} data={data}/>
+            {relatesNews.map((data,key)=>{
+         return <NavLink key={key} to={"/news/"+data.id}> <SearchSlice  data={data}/></NavLink>
         })
         }
             </div>
@@ -57,8 +58,8 @@ const SinglePageBottom = () => {
         <div className="single_page_many_views_container">
             <h3>Շատ դիտվող</h3>
             <div>
-                {manyViewsData.map((data,key)=>{
-                    return <ManyViewsSlice key={key} data={data} count={key+1}/>
+                {mostViewedNews.map((data,key)=>{
+                    return <NavLink key={key} to={'/news/'+data.id}><ManyViewsSlice data={data} count={key+1}/></NavLink>
                 })}
             </div>
         </div>

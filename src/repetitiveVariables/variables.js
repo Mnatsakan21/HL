@@ -28,10 +28,12 @@ export const countries = {
 
 }
 export const countriesfilter = {
+  "armenia":1,
   "turkey":2,
   "georgia":3,
   "iran":4,
   "azerbaijan":5,
+  "international":6
 
 }
 
@@ -53,7 +55,7 @@ export function handleDate(createdAt){
   }
 
 export function scrollTop(){
-  window.scrollTo({
+    window.scrollTo({
     top: 0,
     left: 0,
     behavior: "smooth",

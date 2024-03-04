@@ -22,6 +22,14 @@
             gap: 20px;
         }
     }
+.international_title_single_page::after {
+        content: "";
+        display: block;
+        width: 32px;
+        border-radius: 5px; 
+        border: 3px solid #FF9800;
+        margin: 5px auto 0;
+}
 
 .single_page_section{
     text-align: center;
@@ -47,6 +55,12 @@
         display: inherit;
     }
 
+    }
+    .region_title{
+        border-bottom-color: #4A8FCE;
+        div{
+            background-color: #4A8FCE;
+        }
     }
 }
 

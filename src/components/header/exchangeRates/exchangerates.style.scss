@@ -1,4 +1,4 @@
-.exchange-container{
+.exchange_container{
     text-align: center;
     
     >div{
@@ -8,7 +8,6 @@
         width: 109px;
         height: 40px;
         margin:10px 20px;
-        padding:2px 14px;
         font-size: 20px;
         letter-spacing: 0.2px;
         color: #2B2A4C;
@@ -19,10 +18,11 @@
             margin-right: 10px;
         }
     }
+ 
 }
 
 @media screen and (max-width:768px) {
-    .exchange-container{
+    .exchang_container{
         >hr{
             display: none;
         }

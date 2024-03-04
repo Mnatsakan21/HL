@@ -320,11 +320,11 @@ const Armenia = () => {
           const legal = await axios.get('http://localhost:5005/api/v1/news/filter?countryId=1&categoryId=2') 
           const military = await axios.get('http://localhost:5005/api/v1/news/filter?countryId=1&categoryId=3') 
           const society = await axios.get('http://localhost:5005/api/v1/news/filter?countryId=1&categoryId=4') 
-          setData(data)
-          setDataPolitics(politics.data)
-          setDataMilitary(military.data)
-          setDataLegal(legal.data)
-          setDataSociety(society.data)
+          setData(data.filter((data)=>data.newsContent.file.isImage))
+          setDataPolitics(politics.data.filter((data)=>data.newsContent.file.isImage))
+          setDataMilitary(military.data.filter((data)=>data.newsContent.file.isImage))
+          setDataLegal(legal.data.filter((data)=>data.newsContent.file.isImage))
+          setDataSociety(society.data.filter((data)=>data.newsContent.file.isImage))
         } catch (error) {
           console.log(error)
         }

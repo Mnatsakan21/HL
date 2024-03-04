@@ -15,12 +15,13 @@ const Main = () => {
     (async () => {
       try {
         const {data}= await axios.get('http://localhost:5005/api/v1/news/getAll')
-        setAllNews(data)
+        setAllNews(data.filter((data)=>data.newsContent.file.isImage))
       } catch (error) {
         console.log(error)
       }
     })()
   },[])
+  
   return (
     <main className='home_page'>
         <TodayNews/>

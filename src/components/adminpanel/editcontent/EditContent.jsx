@@ -4,6 +4,7 @@ import { useState,useRef, useEffect } from "react"
 import FilterContent from "./filtercontent/FilterContent"
 import { Link, Outlet, useParams } from "react-router-dom"
 import axios from "axios"
+import { categories, countriesfilter } from "../../../repetitiveVariables/variables"
 
 const chooseSection = [
     {label:"Հայաստան",value:"armenia"},
@@ -25,25 +26,17 @@ const chooseSubsectionRegion = [
     {label:"Ադրբեջան",value:"azerbaijan"},
     {label:"Բոլորը", value:"all"}
 ]
+const chooseSubsectionInternational = [
+    {label:"Բոլորը", value:"all"}
+]
 const contentTypeData = [
     {label:"Թեքստային",value:"text"},
     {label:"Վիդեո",value:"video"},
     {label:"Ուղիղ եթեր",value:"live"},
     {label:"Բոլորը", value:"all"}
 ]
-const country = {
-  "armenia":1,
-  "region":2,
-  "international":3,
-  "all":""
-}
 
-const category = {
-  "military":1,
-  "politics":2,
-  "legal":3,
-  "society":4
-}
+
 
 const EditContent = () => {
     const [sectionValue, setSectionValue] = useState('all')
@@ -60,16 +53,39 @@ const EditContent = () => {
     const maxPages = Math.ceil(data.length/6)
     const {id} = useParams()
 
-
+    function handleFilter(data){
+      if(contentType == "all"){
+       return setData(data)
+      }else if(contentType == "text"){
+       return setData(data.filter((data)=>data.newsContent.file.isImage))
+      }else if (contentType == "video"){
+       return setData(data.filter((data)=>!data.newsContent.file.isImage))
+       }
+    }
     useEffect(()=>{
       (async () => {
         try {
           if(sectionValue == 'all' && subsectionValue == "all") {
             const {data}= await axios.get('http://localhost:5005/api/v1/news/getAll')
-            setData(data)
+            handleFilter(data)
+          }else if(sectionValue == 'international'){
+            const {data}= await axios.get(`http://localhost:5005/api/v1/news/filter?countryId=6`)
+            handleFilter(data)
+          }else if(sectionValue == 'armenia' && subsectionValue == "all"){
+            const {data}= await axios.get(`http://localhost:5005/api/v1/news/filter?countryId=1`)
+            handleFilter(data)
+          }else if(sectionValue == "region"){
+            if(subsectionValue == "all"){
+              const {data}= await axios.get(`http://localhost:5005/api/v1/news/getAll`)
+              const dataRegion = data.filter((data)=>data.countryId != 1 && data.countryId != 6)
+              handleFilter(dataRegion)
+            }else{
+              const {data}= await axios.get(`http://localhost:5005/api/v1/news/filter?countryId=${countriesfilter[subsectionValue]}`)
+              handleFilter(data)
+            }
           }else{
-            const {data}= await axios.get(`http://localhost:5005/api/v1/news/filter?countryId=${country[sectionValue]}&categoryId=${category[subsectionValue]}`)
-            setData(data)
+            const {data}= await axios.get(`http://localhost:5005/api/v1/news/filter?countryId=${countriesfilter[sectionValue]}&categoryId=${categories[subsectionValue]}`)
+            handleFilter(data)
             
           }
           
@@ -77,7 +93,11 @@ const EditContent = () => {
           console.log(error)
         }
       })()
-    },[sectionValue,subsectionValue])
+      setCurrentPage(1)
+      setContentBegining(0)
+      setContentQuantity(6)
+      
+    },[sectionValue,subsectionValue,contentType])
 
     function handleNextPage () {
       if(currentPage<maxPages){
@@ -104,15 +124,26 @@ const EditContent = () => {
       containerRef.current.scrollIntoView({behavior:"smooth", block: "start"})
     }
 
+    function handleSectionValue(value){
+      if(value == "region" || value == "armenia"){
+        setSubsectionValue("all")
+        setContentType("all")
+      }      
+      setSectionValue(value)
+    }
+
+
   return (
     <>
     {id?<Outlet/>:
     <>
       <div ref={containerRef} className="drop_down_container" >
-        <DropDownMenu render={setSectionValue} chooseSection={chooseSection} edit={true} title ="Choose section"/>
-        {sectionValue == "region"?<DropDownMenu render={setSubsectionValue} edit={true} chooseSection={chooseSubsectionRegion} title ="Choose subsection"/>:<DropDownMenu render={setSubsectionValue} chooseSection={chooseSubsection} edit={true} title ="Choose subsection"/>}
+        
+        <DropDownMenu render={handleSectionValue} chooseSection={chooseSection} edit={true} title ="Բոլորը"/>
+        {sectionValue == "region"?<DropDownMenu valueSelected={subsectionValue} render={setSubsectionValue} edit={true} chooseSection={chooseSubsectionRegion} title ="Բոլորը"/>:sectionValue == "international"?<DropDownMenu chooseSection={chooseSubsectionInternational} title ="Բոլորը"/>:<DropDownMenu valueSelected={subsectionValue} render={setSubsectionValue} chooseSection={chooseSubsection} edit={true} title ="Բոլորը"/>}
 
-        <DropDownMenu render={setContentType} chooseSection={contentTypeData} edit={true} title ="Content type"/>
+        <DropDownMenu valueSelected={contentType} render={setContentType} chooseSection={contentTypeData} edit={true} title ="Բոլորը"/>
+
     </div>
     {data && data.map((data,key)=>{
         if(key>=contentQuantity || key<contentBeginning)return

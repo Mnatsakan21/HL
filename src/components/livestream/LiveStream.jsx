@@ -3,6 +3,7 @@ import WatchClip from "../homepage/watch/watchclip/WatchClip"
 import "./livestream.style.scss"
 import LiveStreamSlice from "./livestreamslice/LiveStreamSlice"
 import axios from "axios"
+import { NavLink } from "react-router-dom"
 
 const data = [
     {
@@ -68,6 +69,7 @@ const LiveStream = () => {
         setQuantity(2)
      }
     },[])
+    
   return (
     <main className="live_stream_container">
         {/* <iframe src="https://www.youtube.com/embed/Y7BiOVz9XvY?si=Y8b2Z0LNhos44zRH" ></iframe> */}
@@ -98,7 +100,7 @@ const LiveStream = () => {
             <div>
                {dataWatch && dataWatch.map((data,key)=>{
                     if(manyViewsQuantity<key)return
-                return <WatchClip key={key} data={data}/>
+                return <NavLink to={'/videos/'+data.id} key={key}><WatchClip  data={data}/></NavLink>
                })}
             </div>
             <div className="aside_btn many_views_btn" >

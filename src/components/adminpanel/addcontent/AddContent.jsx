@@ -40,7 +40,7 @@ const AddContent = () => {
     const liveStreamRef = useRef(null)
     const videoLinkRef = useRef(null)
     const videoAuthorRef = useRef(null)
-    
+    console.log(richEditorValue)
     function handleAddContent (){
         console.log(sectionValue,subsectionValue,contentType,richEditorValue)
     }

@@ -17,7 +17,7 @@ const International = ({title,dataNew,dataGlobal}) => {
     (async () => {
       try {
         const {data}= await axios.get('http://localhost:5005/api/v1/news/filter?countryId=6')  
-        setData(data)
+        setData(data.filter((data)=>data.newsContent.file.isImage))
       } catch (error) {
         console.log(error)
       }

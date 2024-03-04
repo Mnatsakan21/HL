@@ -3,32 +3,41 @@ import "./singlepage.style.scss"
 import SinglePageBottom from "./singlepagebottom/SinglePageBottom"
 import {useParams } from "react-router-dom"
 import axios from "axios"
-import { address,countries,categories,handleDate } from "../../repetitiveVariables/variables"
+import { address,countries,categories,handleDate, scrollTop } from "../../repetitiveVariables/variables"
 
 const SinglePage = () => {
   const [dataId,setDataId] = useState()
+  const [mostViewedNews,setMostViewedNews] = useState("")
+  const [relatesNews,setRelatesNews] = useState("")
   const {id} = useParams()
 
   useEffect(()=>{
     (async () => {
       try {
         const {data} = await axios.get(`http://localhost:5005/api/v1/news/getOne/${id}`)
+        const {data:{mostViewedNews,relatesNews}} = await axios.get(`http://localhost:5005/api/v1/news/getMostViewedAndRelates/${data.categoryId}`)
+        setMostViewedNews(mostViewedNews)
+        setRelatesNews(relatesNews)
         setDataId(data)
       } catch (error) {
         console.log(error)
       }
     })()
-  },[])
+    scrollTop()
+  },[id])
 
   return (
     <>
     <main className="single_page_container">
         <div className="single_page_section">
+            {dataId && dataId.countryId == 6?<h3 className="international_title_single_page">Միջազգային</h3>:
+            <>
             <h3>{dataId && dataId.countryId == 1? countries[dataId.countryId]:"Տարածաշրջան"}</h3>
-            <div>
+            <div className={dataId && dataId.countryId == 1?"":"region_title"}>
                 <div></div>
             </div>
             <h3>{dataId && dataId.countryId == 1?categories[dataId.categoryId]:countries[dataId?.countryId]}</h3>
+            </>}
         </div>
 
         <div className="single_page_title">
@@ -48,7 +57,7 @@ const SinglePage = () => {
             <p>{dataId && dataId.description}</p>
             <h4>{dataId && dataId.newsContent.title}</h4>
             <p>{dataId && dataId.newsContent.description}</p>
-            {/* <img src="/img/cyclist.png" alt="Լրատվական նկար" /> */}
+            
         </div>
         <div className="single_page_about_bottom">
           <h4>Հեղ․՝ {dataId && dataId.newsContent.author}</h4>
@@ -68,7 +77,7 @@ const SinglePage = () => {
                 </ul>
         </div>
     </main>
-        <SinglePageBottom/>
+        {relatesNews && <SinglePageBottom mostViewedNews={mostViewedNews} relatesNews={relatesNews}/>}
     </>
   )
 }
