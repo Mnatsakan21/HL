@@ -5,23 +5,9 @@ import {useEffect, useState} from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-const data = {
-  date:"Հուլ 3,2023",
-  title:"Lոռեմ իպսում դոլոռ սիթ ամեթ, քուո ադ",
-  about:"Լոռեմ իպսում դոլոռ սիթ ամեթ, քուո ադ ծհոռո եխեռծի դելիծաթա",
-  img:"./img/cyclist.png"
-}
-
-const dataRight = {
-  title:"Lոռեմ իպսում դոլոռ սիթ ամեթ, քուո ադ ծհոռո եխեռծի դելիծաթա, ադ վիս վիթաե քուիդամ, ծում ոդիո ունում լուդուս եու",
-  about:"Լոռեմ իպսում դոլոռ սիթ ամեթ, քուո ադ ծհոռո եխեռծի դելիծաթա, ադ վիս վիթաե քուիդամ",
-  img:"/img/Group143726076.png",
-  region:"Տարածաշրջան"
-}
-
 const VeryReadable = () => {
   const [dataMostWiew,setDataMostWiew] = useState()
-
+  
   useEffect(()=>{
     (async () => {
       try {
@@ -32,7 +18,6 @@ const VeryReadable = () => {
       }
     })()
   },[])
-
   return (
     <section className='very_readable_container'>
       <div className='very_readables'>
@@ -46,10 +31,8 @@ const VeryReadable = () => {
       </div>
       
       <div className='very_readable_right'>
-       {dataMostWiew && <Link to={'/news/'+dataMostWiew[2].id}>
-        <VeryReadableNewsRight data = {dataMostWiew[2]}/>
-        </Link> 
-        }
+       {dataMostWiew && <Link to={'/news/'+ dataMostWiew[2].id}>
+        <VeryReadableNewsRight data = {dataMostWiew[2]}/></Link>}
       </div>
     </section>
   )

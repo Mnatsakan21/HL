@@ -5,7 +5,7 @@ import './international.style.scss'
 import { Link } from "react-router-dom"
 import axios from "axios"
 
-const International = ({title,dataNew,dataGlobal}) => {
+const International = () => {
   const [data,setData] = useState("")
   const [currentPage, setCurrentPage] = useState(1)
   const [contentBeginning,setContentBegining] = useState(0)
@@ -17,7 +17,7 @@ const International = ({title,dataNew,dataGlobal}) => {
     (async () => {
       try {
         const {data}= await axios.get('http://localhost:5005/api/v1/news/filter?countryId=6')  
-        setData(data)
+        setData(data.filter((data)=>data.newsContent.file.isImage))
       } catch (error) {
         console.log(error)
       }
@@ -49,15 +49,14 @@ const International = ({title,dataNew,dataGlobal}) => {
       setContentQuantity(number*8)
       containerRef.current.scrollIntoView({behavior:"smooth"})
     }
-    
 
   return (
     <main className="international_container">
-        <h2>{title}</h2>
+        <h2>Միջազգային</h2>
         <hr/>
-        <AllNews title="Թարմ նորություններ" data={data && data} region={title}/>
+        <AllNews title="Թարմ նորություններ" data={data && data}/>
         <div ref={containerRef} className="international_container_bottom">
-            <h3 className="international_title">{title}</h3>
+            <h3 className="international_title">Միջազգային</h3>
             
             <div>
             {data && data.map((data,key)=>{

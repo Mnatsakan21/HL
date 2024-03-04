@@ -6,24 +6,15 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import { Pagination,Navigation } from 'swiper/modules'
 import axios from "axios"
-import { address,countries } from "../../../../repetitiveVariables/variables"
+import { address } from "../../../../repetitiveVariables/variables"
 import { Link } from "react-router-dom"
 
-const data = [
-  {
-  id:1,
-  title:"Lոռեմ իպսում դոլոռ սիթ ամեթ, քուո ադ ծհոռո եխեռծի դելիծաթա, ադ վիս վիթաե քուիդամ, ծում ոդիո ունում լուդուս եու",
-  description:"Լոռեմ իպսում դոլոռ սիթ ամեթ, քուո ադ ծհոռո եխեռծի դելիծաթա, ադ վիս վիթաե քուիդամ,դիամ թռիթանի ածծուսամուս, իդ սոլեաթ դեթեռռուիսսեթ մեդիոծռիթաթեմ մել, մեա քուիս նուսքուամ եի.",
-  img:"",
-  country:"armenia"
-},
-]
+
 export default function Slider() {
    
     const swiperRef = useRef()
-
-
     const [dataToday,setDataToday] = useState()
+
 
     useEffect(()=>{
       (async () => {
@@ -54,11 +45,11 @@ export default function Slider() {
            return <SwiperSlide key={key}>
                     <Link to={"/news/"+id}>
                     <div className='today_news_slider'>
-                        <img src={address+img} alt="" />
+                        <div className="slider_img" style={{backgroundImage:`url(${address+img})`}}></div>
                         <div className="today_news_text">
                           <h3>{title}</h3>
                           <p>{description}</p>
-                          <h4>{countries[country.title]}</h4>
+                          <h4>{country.title}</h4>
                         </div>
                     </div>
                   </Link>

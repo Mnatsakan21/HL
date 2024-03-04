@@ -4,80 +4,7 @@ import SearchSlice from "./searchslice/SearchSlice"
 import axios from "axios"
 import { Link } from "react-router-dom"
 
-const data = [
-  {
-    date:"Հուլ 3,2023",
-    title:"Lոռեմ իպսում դոլոռ սիթ ամեթ, քուո ադ իպսում դոլոռ սիթ ամեթ, քուո ադ",
-    about:"Լոռեմ իպսում դոլոռ սիթ ամեթ, տուրիզմ ադ ծհոռո եխեռծի դելիծաթա Լոռեմ տուրիզմ դոլոռ սիթ ամեթ, քուո ադ ծհոռո եխեռծի դելիծաթա",
-    img:"../img/cyclist.png",
-  },
-  {
-    date:"Հուլ 3,2023",
-    title:"Lոռեմ իպսում դոլոռ սիթ ամեթ, քուո ադ իպսում դոլոռ սիթ ամեթ, քուո ադ",
-    about:"Լոռեմ իպսում դոլոռ սիթ ամեթ, տուրիզմ ադ ծհոռո եխեռծի դելիծաթա Լոռեմ տուրիզմ դոլոռ սիթ ամեթ, քուո ադ ծհոռո եխեռծի դելիծաթա",
-    img:"../img/cyclist.png",
-  },
-  {
-    date:"Հուլ 3,2023",
-    title:"Lոռեմ իպսում դոլոռ սիթ ամեթ, քուո ադ իպսում դոլոռ սիթ ամեթ, քուո ադ",
-    about:"Լոռեմ իպսում դոլոռ սիթ ամեթ, տուրիզմ ադ ծհոռո եխեռծի դելիծաթա Լոռեմ տուրիզմ դոլոռ սիթ ամեթ, քուո ադ ծհոռո եխեռծի դելիծաթա",
-    img:"../img/cyclist.png",
-  },
-  {
-    date:"Հուլ 3,2023",
-    title:"Lոռեմ իպսում դոլոռ սիթ ամեթ, քուո ադ իպսում դոլոռ սիթ ամեթ, քուո ադ",
-    about:"Լոռեմ իպսում դոլոռ սիթ ամեթ, տուրիզմ ադ ծհոռո եխեռծի դելիծաթա Լոռեմ տուրիզմ դոլոռ սիթ ամեթ, քուո ադ ծհոռո եխեռծի դելիծաթա",
-    img:"../img/cyclist.png",
-  },
-  {
-    date:"Հուլ 3,2023",
-    title:"Lոռեմ իպսում դոլոռ սիթ ամեթ, քուո ադ իպսում դոլոռ սիթ ամեթ, քուո ադ",
-    about:"Լոռեմ իպսում դոլոռ սիթ ամեթ, տուրիզմ ադ ծհոռո եխեռծի դելիծաթա Լոռեմ տուրիզմ դոլոռ սիթ ամեթ, քուո ադ ծհոռո եխեռծի դելիծաթա",
-    img:"../img/cyclist.png",
-  },
-  {
-    date:"Հուլ 3,2023",
-    title:"Lոռեմ իպսում դոլոռ սիթ ամեթ, քուո ադ իպսում դոլոռ սիթ ամեթ, քուո ադ",
-    about:"Լոռեմ իպսում դոլոռ սիթ ամեթ, տուրիզմ ադ ծհոռո եխեռծի դելիծաթա Լոռեմ տուրիզմ դոլոռ սիթ ամեթ, քուո ադ ծհոռո եխեռծի դելիծաթա",
-    img:"../img/cyclist.png",
-  },
-  {
-    date:"Հուլ 3,2023",
-    title:"Lոռեմ իպսում դոլոռ սիթ ամեթ, քուո ադ իպսում դոլոռ սիթ ամեթ, քուո ադ",
-    about:"Լոռեմ իպսում դոլոռ սիթ ամեթ, տուրիզմ ադ ծհոռո եխեռծի դելիծաթա Լոռեմ տուրիզմ դոլոռ սիթ ամեթ, քուո ադ ծհոռո եխեռծի դելիծաթա",
-    img:"../img/cyclist.png",
-  },
-  {
-    date:"Հուլ 3,2023",
-    title:"Lոռեմ իպսում դոլոռ սիթ ամեթ, քուո ադ իպսում դոլոռ սիթ ամեթ, քուո ադ",
-    about:"Լոռեմ իպսում դոլոռ սիթ ամեթ, տուրիզմ ադ ծհոռո եխեռծի դելիծաթա Լոռեմ տուրիզմ դոլոռ սիթ ամեթ, քուո ադ ծհոռո եխեռծի դելիծաթա",
-    img:"../img/cyclist.png",
-  },
-  {
-    date:"Հուլ 3,2023",
-    title:"Lոռեմ իպսում դոլոռ սիթ ամեթ, քուո ադ իպսում դոլոռ սիթ ամեթ, քուո ադ",
-    about:"Լոռեմ իպսում դոլոռ սիթ ամեթ, տուրիզմ ադ ծհոռո եխեռծի դելիծաթա Լոռեմ տուրիզմ դոլոռ սիթ ամեթ, քուո ադ ծհոռո եխեռծի դելիծաթա",
-    img:"../img/cyclist.png",
-  },
-  {
-    date:"Հուլ 3,2023",
-    title:"Lոռեմ իպսում դոլոռ սիթ ամեթ, քուո ադ իպսում դոլոռ սիթ ամեթ, քուո ադ",
-    about:"Լոռեմ իպսում դոլոռ սիթ ամեթ, տուրիզմ ադ ծհոռո եխեռծի դելիծաթա Լոռեմ տուրիզմ դոլոռ սիթ ամեթ, քուո ադ ծհոռո եխեռծի դելիծաթա",
-    img:"../img/cyclist.png",
-  },
-  {
-    date:"Հուլ 3,2023",
-    title:"Lոռեմ իպսում դոլոռ սիթ ամեթ, քուո ադ իպսում դոլոռ սիթ ամեթ, քուո ադ",
-    about:"Լոռեմ իպսում դոլոռ սիթ ամեթ, տուրիզմ ադ ծհոռո եխեռծի դելիծաթա Լոռեմ տուրիզմ դոլոռ սիթ ամեթ, քուո ադ ծհոռո եխեռծի դելիծաթա",
-    img:"../img/cyclist.png",
-  },
-  {
-    date:"Հուլ 3,2023",
-    title:"Lոռեմ իպսում դոլոռ սիթ ամեթ, քուո ադ իպսում դոլոռ սիթ ամեթ, քուո ադ",
-    about:"Լոռեմ իպսում դոլոռ սիթ ամեթ, տուրիզմ ադ ծհոռո եխեռծի դելիծաթա Լոռեմ տուրիզմ դոլոռ սիթ ամեթ, քուո ադ ծհոռո եխեռծի դելիծաթա",
-    img:"../img/cyclist.png",
-  },
-]
+
 const Search = () => {
     const inputRef = useRef()
     const [search,setSearch] = useState()
@@ -87,14 +14,16 @@ const Search = () => {
     const [contentBeginning,setContentBegining] = useState(0)
     const [contentQuantity,setContentQuantity] = useState(6)
     const containerRef = useRef(null)
-    const maxPages = Math.ceil(data.length/6)
-    
+    const maxPages = Math.ceil(searchData?.length/6)
     
     useEffect(()=>{
         (async () => {
             try { 
                 if(search == "")return
           const {data} = await axios.get(`http://localhost:5005/api/v1/news/search?search=${search}`)
+          setCurrentPage(1)
+          setContentBegining(0)
+          setContentQuantity(6)
           setSearchData(data)
         } catch (error) {
             console.log(error)
@@ -133,7 +62,7 @@ const Search = () => {
     <main ref={containerRef} className="search_container">
         <div className="input_container">
             <input ref={inputRef} type="text" placeholder="Որոնել ․․․" />
-            <button onClick={()=>{setSearch(inputRef.current.value)}}><img src="/img/VectorSearch.png" alt="Որոնել" /></button>
+            <button onClick={()=>{setSearch(inputRef.current.value.trim())}}><img src="/img/VectorSearch.png" alt="Որոնել" /></button>
         </div>
         {search && <div className="search_result">
             <p><span>{`<<${search}>> `}</span>որոնման արդյունքերը</p>
@@ -145,6 +74,7 @@ const Search = () => {
         <>
         {searchData.map((data,key)=>{
           if(key>=contentQuantity || key<contentBeginning)return
+          console.log(data)
           return <Link  key={key} to={"/news/"+data.id}>
           <SearchSlice data={data}/>
          </Link>

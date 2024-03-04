@@ -2,10 +2,11 @@ import { address, countries } from '../../../../repetitiveVariables/variables'
 import './veryreadablenews.style.scss'
 
 const VeryReadableNewsRight = ({data:{title,description,img,countryId}}) => {
-
   return (
     <div className='very_readable_news_container'>
-        <img src={address+img} alt="Լրատվական նկար"/>
+        <div style={{
+          backgroundImage:`url(${address+img})`
+        }} className='very_readable_img'></div>
         <div className='very_readable_news_data'>
           <h3>{title}</h3>
           <p>{description}</p>

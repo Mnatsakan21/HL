@@ -8,10 +8,13 @@
 .today_news_slider{
     position: relative;
     height:532px;
-    img{
+    .slider_img{
         width: 100%;
         height: 100%;
         cursor: pointer;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
      }     
  }
 .today_news_slider:hover{

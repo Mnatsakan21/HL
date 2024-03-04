@@ -25,13 +25,25 @@ export const countries = {
   "4":"Իրան",
   "azerbaijan":"Ադրբեջան",
   "5":"Ադրբեջան",
+  "international":"Միջազգային",
+  "6":"Միջազգային",
+  
 
 }
 export const countriesfilter = {
+  "armenia":1,
   "turkey":2,
   "georgia":3,
   "iran":4,
   "azerbaijan":5,
+  "international":6,
+  1:"armenia",
+  2:"turkey",
+  3:"georgia",
+  4:"iran",
+  5:"azerbaijan",
+  6:"international"
+
 
 }
 
@@ -46,6 +58,24 @@ export const categories = {
   "society":4
 
 }
+
+export const categoriesfilter = {
+  1:"politics",
+  2:"legal",
+  3:"military",
+  4:"society",
+  "politics":"Քաղաքական",
+  "legal":"Իրավական",
+  "military":"Ռազմական",
+  "society":"Հասարակություն",
+}
+
+export const contentTypefilter = {
+  "text":"Թեքստային",
+  "video":"Վիդեո",
+  "live":"Ուղիղ եթեր"
+}
+
 export function handleDate(createdAt){
     if(!createdAt)return
     const date = createdAt.split("-")
@@ -53,7 +83,7 @@ export function handleDate(createdAt){
   }
 
 export function scrollTop(){
-  window.scrollTo({
+    window.scrollTo({
     top: 0,
     left: 0,
     behavior: "smooth",

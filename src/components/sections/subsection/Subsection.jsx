@@ -5,7 +5,7 @@ import { Link, useLocation } from "react-router-dom"
 import axios from "axios"
 import { categories,countriesfilter } from "../../../repetitiveVariables/variables"
 
-const Subsection = ({title,dataGlobal}) => {
+const Subsection = ({title}) => {
   const [data,setData] = useState("")
   const location = useLocation().pathname.split("/")
 
@@ -15,14 +15,12 @@ const Subsection = ({title,dataGlobal}) => {
   const containerRef = useRef(null)
   const maxPages = Math.ceil(data?.length/8)
 
-    
   useEffect(()=>{
     (async () => {
       try {
         if(location[1] == "armenia"){
           const {data} = await axios.get(`http://localhost:5005/api/v1/news/filter?countryId=1&categoryId=${categories[location[2]]}`) 
           setData(data)
-
         }else{
           const {data} = await axios.get(`http://localhost:5005/api/v1/news/filter?countryId=${countriesfilter[location[2]]}`) 
           setData(data)
@@ -61,16 +59,14 @@ const Subsection = ({title,dataGlobal}) => {
       setContentQuantity(number*8)
     }
     
-    function handleAfterColor(title){
-      if(title == "Քաղաքական" || title == "Իրավական" || title == "Ռազմական" || title == "Հասարակություն" )return "subsection_armenia"
-      else return "subsection_region"
-
+    function handleAfterColor(){
+      return location[1] == "armenia"?"subsection_armenia":"subsection_region"
     }
 
   return (
     <main className="subsection_container">
         <div ref={containerRef} className="subsection_container_bottom">
-            <h3 className={handleAfterColor(title)}>{title}</h3>
+            <h3 className={handleAfterColor()}>{title}</h3>
             
             <div>
             {data && data.map((data,key)=>{
@@ -78,7 +74,8 @@ const Subsection = ({title,dataGlobal}) => {
                 return <Link to={"/news/"+ data.id}><AsideSlice key={key} data={data}/></Link>
 
             })}
-              <div className="flex_container">
+              
+            <div className="flex_container">
         
             <div className="paginate_ctn">
               <div className={"arrow "+(currentPage == 1?"":"arrow_active")} onClick={handlePrevPage}> ← </div>

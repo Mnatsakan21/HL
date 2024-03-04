@@ -1,10 +1,11 @@
-import { Link , NavLink} from "react-router-dom"
+import { Link , NavLink, useLocation} from "react-router-dom"
 import "./article.style.scss"
 import AsideSlice from "../asideslice/AsideSlice"
 import { useRef,useEffect } from "react"
 
 const Article = ({title,data,to=""}) => {
   const advisRef = useRef(null);
+  const {pathname} = useLocation()
 
   useEffect(() => {
       if (window.location.hash.includes(to) ) {
@@ -13,15 +14,13 @@ const Article = ({title,data,to=""}) => {
   }, [])
 
   
-  function handleAfterColor(title){
-    if(title == "Քաղաքական" || title == "Իրավական" || title == "Ռազմական" || title == "Հասարակություն" )return "subsection_armenia"
-    else return "subsection_region"
-
+  function handleAfterColor(){
+    return pathname.includes("armenia")?"subsection_armenia":"subsection_region"
   }
 
   return (
     <div id={to} ref={advisRef} className="aside_container">
-        <h2 className={handleAfterColor(title)}>{title}</h2>
+        <h2 className={handleAfterColor()}>{title}</h2>
         <div>
         {data && data.map((data,key)=>{
           if(key>2)return

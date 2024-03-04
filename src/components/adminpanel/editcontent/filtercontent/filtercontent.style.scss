@@ -9,6 +9,33 @@
 
     }
 }
+.filter_content_img_container{
+    position: relative;
+    >div{
+        display: flex;
+        align-items: center;
+        position: absolute;
+        z-index: 1;
+        top: 8px;
+        left: 8px;
+        background-color: #2B2A4C;
+        border-radius: 6px;
+        padding: 4px 10px;        
+        img{
+            width: 20px;
+            height: 20px;
+        }
+        p{
+            font-family: "DejavuSans400";
+            font-size: 14px;
+            line-height: 28px;
+            letter-spacing: -0.03em;
+            color: #C9D6DF;
+        }
+
+    }
+
+}
 
 .filter_content_container:hover{
     .filter_slice_texts>h3{

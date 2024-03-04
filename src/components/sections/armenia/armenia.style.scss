@@ -77,11 +77,11 @@ border-image-source: linear-gradient(270deg, rgba(74, 143, 206, 0) 1%, #4A8FCE 5
 
 @media screen and (max-width:800px) {
    .region_title_container>ul{
+       flex-direction: column;
+       width: 100%;
        li{
            text-align: left;
        }
-       flex-direction: column;
-       width: 100%;
    } 
 }
 
@@ -98,7 +98,6 @@ border-image-source: linear-gradient(270deg, rgba(74, 143, 206, 0) 1%, #4A8FCE 5
 }
 
 @media screen and (max-width:425px) {
-    
     .region_page{
         padding-inline: 10px;
     }  

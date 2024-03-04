@@ -86,3 +86,19 @@
         }
     }
 }
+
+@media screen and (max-width:600px) {
+
+    .single_page_bottom_container{
+        padding-inline: 16px;
+    }
+ 
+}
+
+@media screen and (max-width:340px) {
+
+    .single_page_bottom_container{
+        padding-inline: 10px;
+    }
+ 
+}

@@ -12,6 +12,7 @@
         font-family: "BraindYerevan";
         font-weight: 400;
     }
+   
     .see_more{
         text-align: center;
         display: none;
@@ -31,6 +32,18 @@
     }
 }
 
+.all_news_container_col_armenia{
+    border-left:3px solid #5F8670;
+    padding-left:10px
+}
+.all_news_container_col_region{
+    border-left:3px solid #4A8FCE;
+    padding-left:10px
+}
+.all_news_container_col_international{
+    border-left:3px solid #FF9800;
+    padding-left:10px
+}
 
 
 .see_more>button:hover{
