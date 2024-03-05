@@ -1,9 +1,34 @@
 import "./singlepagebottom.style.scss"
 import SearchSlice from "../../search/searchslice/SearchSlice"
 import ManyViewsSlice from "./manyviewsslice/ManyViewsSlice"
+<<<<<<< HEAD
 import {  NavLink } from "react-router-dom"
+=======
+import { Link, NavLink } from "react-router-dom"
+>>>>>>> 66db5dec7ec556ab8317b79ff833d80f50bf7413
 
 
+<<<<<<< HEAD
+=======
+const manyViewsData=[
+    {
+        region:"Հայաստան",
+        title:"Lոռեմ իպսում դոլոռ սիթ ամեթ, քուո ադ դոլոռ",
+        about:"Լոռեմ իպսում դոլոռ սիթ ամեթ, քուո ադ ծհոռո եխեռծի դելիծաթա",
+    },
+    {
+        region:"Հայաստան",
+        title:"Lոռեմ իպսում դոլոռ սիթ ամեթ, քուո ադ դոլոռ",
+        about:"Լոռեմ իպսում դոլոռ սիթ ամեթ, քուո ադ ծհոռո եխեռծի դելիծաթա",
+    },
+    {
+        region:"Հայաստան",
+        title:"Lոռեմ իպսում դոլոռ սիթ ամեթ, քուո ադ դոլոռ",
+        about:"Լոռեմ իպսում դոլոռ սիթ ամեթ, քուո ադ ծհոռո եխեռծի դելիծաթա",
+    },
+]
+
+>>>>>>> 66db5dec7ec556ab8317b79ff833d80f50bf7413
 const SinglePageBottom = ({mostViewedNews,relatesNews}) => {
   return (
     <section className="single_page_bottom_container">

@@ -45,6 +45,7 @@ const AddContent = () => {
     const [video,setVideo]=useState('')
     const liveStreamRef = useRef(null)
     const videoLinkRef = useRef(null)
+<<<<<<< HEAD
 
     const titleRef = useRef(null)
     const descriptionRef = useRef(null)
@@ -52,6 +53,10 @@ const AddContent = () => {
     const pictureAuthorRef = useRef(null)
     const fileAuthorRef = useRef(null)
 
+=======
+    const videoAuthorRef = useRef(null)
+    console.log(richEditorValue)
+>>>>>>> 66db5dec7ec556ab8317b79ff833d80f50bf7413
     function handleAddContent (){
       
       (async () => {

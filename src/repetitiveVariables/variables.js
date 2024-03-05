@@ -36,6 +36,7 @@ export const countriesfilter = {
   "georgia":3,
   "iran":4,
   "azerbaijan":5,
+<<<<<<< HEAD
   "international":6,
   1:"armenia",
   2:"turkey",
@@ -44,6 +45,9 @@ export const countriesfilter = {
   5:"azerbaijan",
   6:"international"
 
+=======
+  "international":6
+>>>>>>> 66db5dec7ec556ab8317b79ff833d80f50bf7413
 
 }
 

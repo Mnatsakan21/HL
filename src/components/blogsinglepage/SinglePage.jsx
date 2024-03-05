@@ -25,7 +25,10 @@ const SinglePage = () => {
     })()
     scrollTop()
   },[id])
+<<<<<<< HEAD
 
+=======
+>>>>>>> 66db5dec7ec556ab8317b79ff833d80f50bf7413
 
   return (
     <>
@@ -56,9 +59,17 @@ const SinglePage = () => {
               <div className={dataId && dataId.countryId == 1?"":dataId && dataId.countryId == 6?"international_div":"region_div"}></div>
               <h3>երկար կարդալու</h3>
             </div>
+<<<<<<< HEAD
             <div className={`html_content ${dataId && dataId.countryId == 1?"html_content_armenia":dataId && dataId.countryId == 6?"html_content_international":"html_content_region"}`} dangerouslySetInnerHTML={{__html: dataId && dataId.newsContent.description}}></div>
 
           </div>
+=======
+            <p>{dataId && dataId.description}</p>
+            <h4>{dataId && dataId.newsContent.title}</h4>
+            <p>{dataId && dataId.newsContent.description}</p>
+            
+        </div>
+>>>>>>> 66db5dec7ec556ab8317b79ff833d80f50bf7413
         <div className="single_page_about_bottom">
           <h4>Հեղ․՝ {dataId && dataId.newsContent.file.author}</h4>
                 <ul>
