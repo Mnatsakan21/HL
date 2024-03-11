@@ -19,6 +19,8 @@ import AddContent from './components/adminpanel/addcontent/AddContent'
 import International from './components/sections/international/International'
 import SingleEditContent from './components/adminpanel/editcontent/singleeditcontent/SingleEditContent'
 import EditContentFromId from './components/adminpanel/editcontentfromid/EditContentFromId'
+import LiveEditContent from './components/adminpanel/editcontent/livecontent/liveeditcontent/LiveEditContent'
+import LiveEditId from './components/adminpanel/editcontent/livecontent/liveeditcontentfromid/LiveEditId'
 
 
 
@@ -55,12 +57,15 @@ const App = () => {
 
       <Route path='international' element = {<International/>}/>
       <Route path='live' element = {<LiveStream/>}/>
+      <Route path='live/:id' element = {<LiveStream/>}/>
       <Route path='search' element = {<Search/>}/>
 
 
       <Route path='admin' element = {<AdminPanel/>}>
         <Route path='/admin/add' element = {<AddContent/>} />
         <Route path='/admin/edit' element = {<EditContent/>}>
+            <Route path='/admin/edit/live/:id' element = {<LiveEditContent/>}/>
+            <Route path='/admin/edit/live/:id/editcontent' element = {<LiveEditId/>}/>
             <Route path='/admin/edit/:id' element = {<SingleEditContent/>}/>
               <Route path='/admin/edit/:id/editcontent' element = {<EditContentFromId/>} />
         </Route>

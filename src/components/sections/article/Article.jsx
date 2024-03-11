@@ -4,7 +4,7 @@ import AsideSlice from "../asideslice/AsideSlice"
 import { useRef,useEffect } from "react"
 
 const Article = ({title,data,to=""}) => {
-  const advisRef = useRef(null);
+  const advisRef = useRef(null)
   const {pathname} = useLocation()
 
   useEffect(() => {

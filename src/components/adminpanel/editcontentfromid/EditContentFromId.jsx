@@ -31,6 +31,9 @@ const contentTypeData = [
     {label:"Ուղիղ եթեր",value:"live"},
     {label:"Բոլորը", value:"all"}
 ]
+const chooseSubsectionInternational = [
+    {label:"Բոլորը", value:"all"}
+]
 
 const EditContentFromId = () => {
     const [dataId,setDataId] = useState("")
@@ -41,8 +44,14 @@ const EditContentFromId = () => {
     const [image,setImage]=useState('')
     const [titleValue,setTitleValue]=useState('')
     const [descriptionValue,setDescriptionValue]=useState('')
-
+    const [video,setVideo] = useState('')
     const {id} = useParams()
+
+    const [videoLink,setVideoLink] = useState('')
+
+    const [pictureTitle, setPictureTitle] = useState('')
+    const [pictureAuthor, setPictureAuthor] = useState('')
+    const [fileAuthor, setFileAuthor] = useState('')
 
     useEffect(()=>{
         (async () => {
@@ -62,6 +71,10 @@ const EditContentFromId = () => {
                 }else{
                     setContentType("video")
                 }
+                setVideoLink(data?.newsContent?.file?.url)
+                setFileAuthor(data?.newsContent?.file?.author)
+                setPictureAuthor(data?.newsContent?.author)
+                setPictureTitle(data?.newsContent?.file?.title)
                 setTitleValue(data.title)
                 setDescriptionValue(data.description)
             } catch (error) {
@@ -74,6 +87,9 @@ const EditContentFromId = () => {
     function handleChange(e){
         setImage(e.target.files[0])
     }
+    function handleVideoChange(e){
+        setVideo(e.target.files[0])
+    }
 
     function handleEditContent (){
       
@@ -83,25 +99,28 @@ const EditContentFromId = () => {
             formData.append('description', descriptionValue)
             formData.append('contentTitle', titleValue)
             formData.append('contentDescription', richEditorValue)
+            formData.append('author', pictureAuthor)
+            formData.append('fileTitle',pictureTitle)
+            formData.append('fileAuthor', fileAuthor )
             if(sectionValue == 'armenia'){
               formData.append('countryId', countriesfilter[sectionValue])
               formData.append('categoryId', categories[subsectionValue])
+            }else if(sectionValue == 'international'){
+                formData.append('countryId', countriesfilter[sectionValue])
             }else{
-              formData.append('countryId',countriesfilter[sectionValue])
-              formData.append('categoryId', 1)
+              formData.append('countryId',countriesfilter[subsectionValue])
             }
-            formData.append('author', 'adminka')
-            formData.append('fileTitle', 'adminka')
-            formData.append('fileAuthor', 'adminka')
             formData.append('img', image)
-            formData.append('fileContent', image) 
-            formData.append('middleImage', image)
+            if(video){
+                formData.append('fileContent', video) 
+                formData.append('middleImage', video)
+            }else{
+                formData.append('fileContent', image) 
+                formData.append('middleImage', image)
+            }
   
             try {
-            const { data } = await axios.put(`http://localhost:5005/api/v1/news/editNews/${id}`, formData, 
-            {headers: { 
-                Authorization: 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQURNSU4iLCJpZCI6NSwiaWF0IjoxNzA5NjI2MTY4LCJleHAiOjE3MDk2MjcwNjh9.U1OX01l1sTq2xRcRT3UaX13R0IBlQ1lz12pMZ2JWkyI',
-                }})
+            const { data } = await axios.put(`http://localhost:5005/api/v1/news/editNews/${id}`, formData)
   
             console.log(data)
           } catch (error) {
@@ -115,7 +134,7 @@ const EditContentFromId = () => {
         <div className='drop_down_container'>
 
         <DropDownMenu render={setSectionValue} chooseSection={chooseSection} title ={countries[sectionValue]}/>
-        {sectionValue == "region"?<DropDownMenu render={setSubsectionValue} chooseSection={chooseSubsectionRegion} title ={countries[subsectionValue]}/>:<DropDownMenu render={setSubsectionValue} chooseSection={chooseSubsection} title ={categoriesfilter[subsectionValue]}/>}
+        {sectionValue == "region"?<DropDownMenu render={setSubsectionValue} chooseSection={chooseSubsectionRegion} title ={countries[subsectionValue]}/>:sectionValue == "international"?<DropDownMenu chooseSection={chooseSubsectionInternational} title ="Բոլորը"/>:<DropDownMenu render={setSubsectionValue} chooseSection={chooseSubsection} title ={categoriesfilter[subsectionValue]}/>}
         <DropDownMenu render={setContentType} chooseSection={contentTypeData} title ={contentTypefilter[contentType]}/>
         </div>
         <div className="admin_url_container">
@@ -123,9 +142,11 @@ const EditContentFromId = () => {
 
             {contentType == "video"?
             <>
-            <input type="file" accept="image/*,.pdf" onChange={handleChange}/>
-            <input className="add_video_input" type="text" placeholder="Type video link there"/>
-            <input className="add_video_input" type="text" placeholder="Who is the author? "/>
+            <input className='file' type="file" accept="image/*,.pdf" onChange={handleChange}/>
+            <input className="file"   type="file" onChange={handleVideoChange}/>
+            <p>For Video or write link</p>
+            <input className="add_video_input" value={videoLink} onChange={(e)=>setVideoLink(e.target.value)} type="text" placeholder="Type video link there"/>
+            <input className="add_video_input" type="text" value={pictureAuthor} onChange={(e)=>{setPictureAuthor(e.target.value)}} placeholder="Who is the author? "/>
             <input value={titleValue} type="text" placeholder="title" onChange={(e)=>setTitleValue(e.target.value)}/>
             <input value={descriptionValue} onChange={(e)=>setDescriptionValue(e.target.value)} type="text" placeholder="description"/>
             </>
@@ -133,9 +154,12 @@ const EditContentFromId = () => {
             :null}
             {contentType == "text"?
             <>
-            <input type="file" accept="image/*,.pdf" onChange={handleChange}/>
-            <input value={titleValue} type="text" placeholder="title" onChange={(e)=>setTitleValue(e.target.value)}/>
-            <input value={descriptionValue} onChange={(e)=>setDescriptionValue(e.target.value)} type="text" placeholder="description"/>
+            <input className='file' type="file" accept="image/*,.pdf" onChange={handleChange}/>
+            <input className="add_video_input" value={pictureTitle} onChange={(e)=>{setPictureTitle(e.target.value)}} type="text" placeholder="Picture title"/>
+            <input className="add_video_input" value={pictureAuthor} onChange={(e)=>{setPictureAuthor(e.target.value)}} type="text" placeholder="Picture author"/>
+            <input className="add_video_input"  value={titleValue} type="text" placeholder="title" onChange={(e)=>setTitleValue(e.target.value)}/>
+            <input className="add_video_input"  value={descriptionValue} onChange={(e)=>setDescriptionValue(e.target.value)} type="text" placeholder="description"/>
+            <input className="add_video_input" value={fileAuthor} onChange={(e)=>{setFileAuthor(e.target.value)}} type="text" placeholder="Who is the author?"/>
             </>:null}
             </div>
         <RichEditor value={richEditorValue} setValue={setRichEditorValue} btnValue="Edit Content" click={handleEditContent} />

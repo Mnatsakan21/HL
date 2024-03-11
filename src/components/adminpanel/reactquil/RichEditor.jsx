@@ -17,7 +17,7 @@ const RichEditor = ({value,setValue,click,btnValue = "Add new content"}) => {
   return (
     <div className='quill_container'>
       <ReactQuill theme="snow" value={value} onChange={setValue}  modules={modules} placeholder='Type there....'/> 
-      <button onClick={click}>{btnValue}</button>
+      <button onClick={(click)}>{btnValue}</button>
     </div>
   )
 }

@@ -25,6 +25,7 @@
     }
     >img{
         width: inherit;
+        height: 378px;
         border-radius: 6px;
         cursor: pointer;
     }
@@ -74,6 +75,9 @@
 @media screen and (max-width:600px) {
     .watch_clip_container{
         width: 328px;
+        >img{
+            height: 210px;
+        }
         >div{
             padding:5px 10px;
             top:10px;

@@ -1,7 +1,7 @@
 import './filtercontent.style.scss'
-import { address,categories,countries,handleDate } from '../../../../repetitiveVariables/variables'
+import { address,handleDate } from '../../../../repetitiveVariables/variables'
 
-const FilterContent = ({data:{createdAt,title,description,img,categoryId,countryId,newsContent:{file:{isImage}}}}) => {
+const FilterContent = ({data:{createdAt,title,description,img,categoryId,country,category,countryId,newsContent:{file:{isImage}}}}) => {
 
   return (
     <div className="filter_content_container">
@@ -19,14 +19,14 @@ const FilterContent = ({data:{createdAt,title,description,img,categoryId,country
             <div>
                {countryId == 6?<p>Միջազգային</p>:countryId == 1?
                <>
-                <p>{countries[countryId]}</p>
+                <p>{country.title}</p>
                 <div></div>
-                <p>{categories[categoryId]}</p>
+                <p>{category.title}</p>
                 </>:
                 <>
                 <p>Տարածաշրջան</p>
                 <div></div>
-                <p>{countries[countryId]}</p>
+                <p>{country.title}</p>
                 </>
                 }
             </div>

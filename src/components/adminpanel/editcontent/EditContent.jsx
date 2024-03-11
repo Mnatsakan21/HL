@@ -5,6 +5,7 @@ import FilterContent from "./filtercontent/FilterContent"
 import { Link, Outlet, useParams } from "react-router-dom"
 import axios from "axios"
 import { categories, countriesfilter } from "../../../repetitiveVariables/variables"
+import LiveContent from "./livecontent/LiveContent"
 
 const chooseSection = [
     {label:"Հայաստան",value:"armenia"},
@@ -48,7 +49,7 @@ const EditContent = () => {
     const [contentQuantity,setContentQuantity] = useState(6)
     
     const [data,setData] = useState("")
-    
+
     const containerRef = useRef(null)
     const maxPages = Math.ceil(data.length/6)
     const {id} = useParams()
@@ -57,17 +58,22 @@ const EditContent = () => {
       if(contentType == "all"){
        return setData(data)
       }else if(contentType == "text"){
-       return setData(data.filter((data)=>data.newsContent.file.isImage))
+       return setData(data.filter((data)=>data.newsContent?.file.isImage))
       }else if (contentType == "video"){
-       return setData(data.filter((data)=>!data.newsContent.file.isImage))
-       }
+       return setData(data.filter((data)=>data.newsContent && !data.newsContent.file.isImage))
+      }else{
+        return setData(data.filter((data)=>data.url))
+      }
     }
+
     useEffect(()=>{
       (async () => {
+        const lives = await axios.get('http://localhost:5005/api/v1/live/getAll')
         try {
           if(sectionValue == 'all' && subsectionValue == "all") {
             const {data}= await axios.get('http://localhost:5005/api/v1/news/getAll')
-            handleFilter(data)
+            handleFilter(data.concat(lives.data))
+            
           }else if(sectionValue == 'international'){
             const {data}= await axios.get(`http://localhost:5005/api/v1/news/filter?countryId=6`)
             handleFilter(data)
@@ -132,7 +138,6 @@ const EditContent = () => {
       setSectionValue(value)
     }
 
-
   return (
     <>
     {id?<Outlet/>:
@@ -147,6 +152,7 @@ const EditContent = () => {
     </div>
     {data && data.map((data,key)=>{
         if(key>=contentQuantity || key<contentBeginning)return
+        if(data.url)return <Link key={key} to={"/admin/edit/live/"+data.id}><LiveContent data={data}/></Link>
        return <Link  key={key} to={"/admin/edit/"+data.id}><FilterContent data={data}/></Link>
     })}
     <div className="flex_container">

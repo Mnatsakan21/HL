@@ -71,7 +71,7 @@ const Subsection = ({title}) => {
             <div>
             {data && data.map((data,key)=>{
               if(key>=contentQuantity || key<contentBeginning)return
-                return <Link to={"/news/"+ data.id}><AsideSlice key={key} data={data}/></Link>
+                return <Link key={key} to={"/news/"+ data.id}><AsideSlice data={data}/></Link>
 
             })}
               

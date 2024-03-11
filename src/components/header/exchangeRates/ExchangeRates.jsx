@@ -26,10 +26,10 @@ const ExchangeRates = () => {
             <img src="/img/bx_ruble.png" alt="RUB" />   
             <span>{exchangeDate && exchangeDate.RUB.slice(0,4)}</span>
         </div>
-        <div>
+        {/* <div>
             <img src="/img/tabler_currency-dram.png" alt="Dram" />   
             <span>510</span>
-        </div>
+        </div> */}
         <div>
             <img src="/img/ic_outline-euro.png" alt="EUR" />   
             <span>{exchangeDate && exchangeDate.EUR.slice(0,3)}</span>

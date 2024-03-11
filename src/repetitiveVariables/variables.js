@@ -1,17 +1,18 @@
 export const address = "http://localhost:5005/"
  
 export const dates = {
-    '01': 'Հունվար',
-    '02': 'Փետրվար',
-    '03': 'Մարտ',
-    '04': 'Ապրիլ',
-    '05': 'Մայիս',
-    '06': 'Հունիս',
-    '07': 'Հուլիս',
-    '09': 'Սեպտեմբեր',
-    '10': 'Հոկտեմբեր',
-    '11': 'Նոյեմբեր',
-    '12': 'Դեկտեմբեր',
+    '01': 'Հնվ',
+    '02': 'Փտր',
+    '03': 'Մրտ',
+    '04': 'Ապր',
+    '05': 'Մայ',
+    '06': 'Հուն',
+    '07': 'Հուլ',
+    '08': 'Օգս',
+    '09': 'Սպտ',
+    '10': 'Հոկ',
+    '11': 'Նոյ',
+    '12': 'Դեկ',
 }
 
 export const countries = {
@@ -27,16 +28,15 @@ export const countries = {
   "5":"Ադրբեջան",
   "international":"Միջազգային",
   "6":"Միջազգային",
-  
-
+  "region":"Տարածաշրջան"
 }
+
 export const countriesfilter = {
   "armenia":1,
   "turkey":2,
   "georgia":3,
   "iran":4,
   "azerbaijan":5,
-<<<<<<< HEAD
   "international":6,
   1:"armenia",
   2:"turkey",
@@ -45,9 +45,6 @@ export const countriesfilter = {
   5:"azerbaijan",
   6:"international"
 
-=======
-  "international":6
->>>>>>> 66db5dec7ec556ab8317b79ff833d80f50bf7413
 
 }
 

@@ -1,37 +1,48 @@
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import "./adminpanel.style.scss"
 import AdminLogin from './adminlogin/AdminLogin'
 import AdminContents from './admincontents/AdminContents'
 import {NavLink } from 'react-router-dom'
-
-const loginData = {login:"Valod",password:"123456"}
+import axios from 'axios'
+import { request , response } from './interceptor.js'
 
 const AdminPanel = () => {
     const [data,setData] = useState({login:"",password:""})
-    
-    const [adminPanel,setAdminPanel] = useState(true)
-    
-    
+    const [adminPanel,setAdminPanel] = useState(false)
+    const [isTrue,setIsTrue] = useState(false)
+
     function handleChange({value,name}){
         setData({...data,[name]:value})
     }
     
     function handleClick (){
-        if(loginData.login == data.login && loginData.password == data.password)setAdminPanel(true)
+  
         
-        setData({login:"",password:""})
+        axios.post('http://localhost:5005/api/v1/admin/login',{
+            email:data.login,
+            password:data.password
+          })
+          .then(({data}) => {
+            console.log(data)
+            request(data)
+            response()
+            setAdminPanel(true)
+          })
+          .catch(function (error) {
+            console.log(error)
+            setIsTrue(true)
+          })
+        
     }
-
 
     return (
     <div className='admin_panel_container'>
         <div className='admin_panel_logo'>
-            <NavLink to="/"><img src="/img/Hetaxuyz LOGO.png" alt="Հետախույզ լրատվական լոգո" />
-            </NavLink>
+            <img src="/img/Hetaxuyz LOGO.png" alt="Հետախույզ լրատվական լոգո" />
             <hr/>
         </div>
         {!adminPanel?
-        <AdminLogin render={handleClick} handleChange={handleChange} data={data}/>
+        <AdminLogin isTrue={isTrue} handleClick={handleClick} handleChange={handleChange} data={data}/>
         :<AdminContents/>}
     </div>
   )

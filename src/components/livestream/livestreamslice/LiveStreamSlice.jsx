@@ -1,10 +1,12 @@
 import "./livestreamslice.style.scss"
 
-const LiveStreamSlice = ({img,about}) => {
+const LiveStreamSlice = ({url,title}) => {
+  
   return (
     <div className="live_stream_slice">
-        <img src={img} alt="Ուղիղ եթեր" />
-        <h3>{about}</h3>
+        <div ></div>
+        <iframe src={url}></iframe>
+        <h3>{title}</h3>
         <h4>Ուղիղ եթեր</h4>
     </div>
   )

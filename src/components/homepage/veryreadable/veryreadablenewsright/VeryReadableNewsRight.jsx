@@ -1,7 +1,8 @@
-import { address, countries } from '../../../../repetitiveVariables/variables'
+import { address } from '../../../../repetitiveVariables/variables'
 import './veryreadablenews.style.scss'
 
-const VeryReadableNewsRight = ({data:{title,description,img,countryId}}) => {
+const VeryReadableNewsRight = ({data:{title,description,img,country}}) => {
+
   return (
     <div className='very_readable_news_container'>
         <div style={{
@@ -10,7 +11,7 @@ const VeryReadableNewsRight = ({data:{title,description,img,countryId}}) => {
         <div className='very_readable_news_data'>
           <h3>{title}</h3>
           <p>{description}</p>
-          <h4>{countries[countryId]}</h4>
+          <h4>{country.title}</h4>
         </div>
     </div>
   )

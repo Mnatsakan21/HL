@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import "./admincontents.style.scss"
 import { Link, Outlet, useNavigate} from "react-router-dom"
 
-
 const AdminContents = () => {
     const [active,setActive] = useState("Add new content")
     

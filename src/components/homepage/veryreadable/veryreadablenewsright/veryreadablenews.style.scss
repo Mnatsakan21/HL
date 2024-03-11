@@ -75,8 +75,14 @@
     }
 }
 
-@media screen and (max-width:600px) {
+@media screen and (max-width:475px) {
     .very_readable_img{
         width: 328px;
+    }
+}
+
+@media screen and (max-width:450px) {
+    .very_readable_img{
+        width: 300px;
     }
 }

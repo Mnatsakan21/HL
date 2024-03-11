@@ -18,6 +18,7 @@ const VeryReadable = () => {
       }
     })()
   },[])
+
   return (
     <section className='very_readable_container'>
       <div className='very_readables'>
@@ -31,7 +32,7 @@ const VeryReadable = () => {
       </div>
       
       <div className='very_readable_right'>
-       {dataMostWiew && <Link to={'/news/'+ dataMostWiew[2].id}>
+       {dataMostWiew && dataMostWiew[2] && <Link to={'/news/'+dataMostWiew[2]?.id}>
         <VeryReadableNewsRight data = {dataMostWiew[2]}/></Link>}
       </div>
     </section>
