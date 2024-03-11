@@ -1,5 +1,5 @@
 import './main.style.scss'
-import TodayNews from '../todayNews/Todaynews'
+import TodayNews from '../todayNews/TodayNews'
 import VeryReadable from '../veryreadable/VeryReadable'
 import Watch from '../watch/Watch'
 import AllNews from '../allnews/AllNews'
