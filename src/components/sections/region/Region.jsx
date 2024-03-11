@@ -1,5 +1,5 @@
 import AllNews from "../../homepage/allnews/AllNews"
-import Article from "../article/article"
+import ArticleSubsection from "../article/ArticleSubsection"
 import { useState , useEffect } from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
@@ -49,10 +49,10 @@ const Region = () => {
         </div>
         <hr className="region_line"/>
         <AllNews title={"Թարմ Նորություններ"} data={data && data}/>
-        {data && <Article title="Վրաստան" to="georgia" data={dataGeorgia}/>}
-        {data && <Article title="Թուրքիա" to="turkey" data={dataTurkey}/>}
-        {data && <Article title="Իրան" to="iran" data={dataIran}/>}
-        {data && <Article title="Ադրբեջան" to="azerbaijan" data={dataAzerbaijan}/>}
+        {data && <ArticleSubsection title="Վրաստան" to="georgia" data={dataGeorgia}/>}
+        {data && <ArticleSubsection title="Թուրքիա" to="turkey" data={dataTurkey}/>}
+        {data && <ArticleSubsection title="Իրան" to="iran" data={dataIran}/>}
+        {data && <ArticleSubsection title="Ադրբեջան" to="azerbaijan" data={dataAzerbaijan}/>}
     </main>
   )
 }

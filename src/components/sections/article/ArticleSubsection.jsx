@@ -3,7 +3,7 @@ import "./article.style.scss"
 import AsideSlice from "../asideslice/AsideSlice"
 import { useRef,useEffect } from "react"
 
-const Article = ({title,data,to=""}) => {
+const ArticleSubsection = ({title,data,to=""}) => {
   const advisRef = useRef(null)
   const {pathname} = useLocation()
 
@@ -37,4 +37,4 @@ const Article = ({title,data,to=""}) => {
   )
 }
 
-export default Article
+export default ArticleSubsection

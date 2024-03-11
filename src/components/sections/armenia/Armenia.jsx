@@ -1,11 +1,10 @@
 import "./armenia.style.scss"
 import AllNews from "../../homepage/allnews/AllNews"
-import Article from "../article/article"
 import { useState,useEffect } from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
 import { address } from "../../../repetitiveVariables/variables"
-
+import ArticleSubsection from "../article/ArticleSubsection"
 
 const Armenia = () => {
     const [data,setData] = useState()
@@ -53,10 +52,10 @@ const Armenia = () => {
         </div>
         <hr/>
         <AllNews title="Թարմ Նորություններ" data={data && data}/>
-         {data && <Article title="Քաղաքական" to="politics" data={dataPolitics}/>}
-         {data && <Article title="Իրավական" to="legal" data={dataLegal}/>}
-         {data && <Article title="Ռազմական" to="military" data={dataMilitary}/>}
-         {data && <Article title="Հասարակություն" to="society" data={dataSociety}/>}
+         {data && <ArticleSubsection title="Քաղաքական" to="politics" data={dataPolitics}/>}
+         {data && <ArticleSubsection title="Իրավական" to="legal" data={dataLegal}/>}
+         {data && <ArticleSubsection title="Ռազմական" to="military" data={dataMilitary}/>}
+         {data && <ArticleSubsection title="Հասարակություն" to="society" data={dataSociety}/>}
     </main>
   )
 }
