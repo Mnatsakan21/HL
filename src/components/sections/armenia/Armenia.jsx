@@ -4,6 +4,7 @@ import Article from "../article/article"
 import { useState,useEffect } from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
+import { address } from "../../../repetitiveVariables/variables"
 
 
 const Armenia = () => {
@@ -17,11 +18,11 @@ const Armenia = () => {
     useEffect(()=>{
       (async () => {
         try {
-          const {data}= await axios.get('http://localhost:5005/api/v1/news/filter?countryId=1') 
-          const politics = await axios.get('http://localhost:5005/api/v1/news/filter?countryId=1&categoryId=1') 
-          const legal = await axios.get('http://localhost:5005/api/v1/news/filter?countryId=1&categoryId=2') 
-          const military = await axios.get('http://localhost:5005/api/v1/news/filter?countryId=1&categoryId=3') 
-          const society = await axios.get('http://localhost:5005/api/v1/news/filter?countryId=1&categoryId=4') 
+          const {data}= await axios.get(`${address}/api/v1/news/filter?countryId=1`) 
+          const politics = await axios.get(`${address}/api/v1/news/filter?countryId=1&categoryId=1`) 
+          const legal = await axios.get(`${address}/api/v1/news/filter?countryId=1&categoryId=2`) 
+          const military = await axios.get(`${address}/api/v1/news/filter?countryId=1&categoryId=3`) 
+          const society = await axios.get(`${address}/api/v1/news/filter?countryId=1&categoryId=4`) 
           setData(data.filter((data)=>data.newsContent.file.isImage))
           setDataPolitics(politics.data.filter((data)=>data.newsContent.file.isImage))
           setDataMilitary(military.data.filter((data)=>data.newsContent.file.isImage))

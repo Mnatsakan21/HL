@@ -2,7 +2,7 @@ import "./addcontent.style.scss"
 import {useRef, useState,useEffect} from 'react'
 import DropDownMenu from '../admincontents/dropdownmenu/DropDownMenu'
 import RichEditor from "../reactquil/RichEditor"
-import { categories, countriesfilter } from "../../../repetitiveVariables/variables"
+import { categories, countriesfilter , address } from "../../../repetitiveVariables/variables"
 import axios from "axios"
 
 const chooseSection = [
@@ -62,7 +62,7 @@ const AddContent = () => {
           formData.append('title', liveTitleRef.current.value)
           
           try {
-            const  data = await axios.post('http://localhost:5005/api/v1/live/create', formData)
+            const  data = await axios.post(`${address}/api/v1/live/create`, formData)
             
             console.log(data)
           } catch (error) {
@@ -103,7 +103,7 @@ const AddContent = () => {
             }
           
           try {
-            const { data } = await axios.post('http://localhost:5005/api/v1/news/create', formData, 
+            const { data } = await axios.post(`${address}/api/v1/news/create`, formData, 
             {headers: { 
               Authorization: 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQURNSU4iLCJpZCI6NSwiaWF0IjoxNzA5NzQ1NDY4LCJleHAiOjE3MDk3NDYzNjh9.kHe_YFYmvsHma1eNunFQnx4W-6-uZch-kpkRRVtaO30',
             }})

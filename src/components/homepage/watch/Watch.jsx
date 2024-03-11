@@ -3,14 +3,14 @@ import "./watch.style.scss"
 import WatchClip from "./watchclip/WatchClip"
 import axios from "axios"
 import { useEffect , useState} from "react"
-
+import { address } from "../../../repetitiveVariables/variables"
 const Watch = () => {
     const [dataWatch,setDataWatch] = useState()
   
     useEffect(()=>{
       (async () => {
         try {
-          const {data}= await axios.get('http://localhost:5005/api/v1/news/getAll')
+          const {data}= await axios.get(`${address}/api/v1/news/getAll`)
           setDataWatch(data.filter((data)=>!data.newsContent.file.isImage && data))
         } catch (error) {
           console.log(error)

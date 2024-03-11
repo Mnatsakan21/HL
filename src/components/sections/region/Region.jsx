@@ -3,7 +3,7 @@ import Article from "../article/article"
 import { useState , useEffect } from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
-
+import { address } from "../../../repetitiveVariables/variables"
 
 const Region = () => {
   const [data,setData] = useState()
@@ -15,11 +15,11 @@ const Region = () => {
   useEffect(()=>{
     (async () => {
       try {
-        const {data}= await axios.get('http://localhost:5005/api/v1/news/getAll') 
-        const turkey = await axios.get('http://localhost:5005/api/v1/news/filter?countryId=2') 
-        const georgia = await axios.get('http://localhost:5005/api/v1/news/filter?countryId=3') 
-        const iran = await axios.get('http://localhost:5005/api/v1/news/filter?countryId=4') 
-        const azerbaijan = await axios.get('http://localhost:5005/api/v1/news/filter?countryId=5') 
+        const {data}= await axios.get(`${address}/api/v1/news/getAll`) 
+        const turkey = await axios.get(`${address}/api/v1/news/filter?countryId=2`) 
+        const georgia = await axios.get(`${address}/api/v1/news/filter?countryId=3`) 
+        const iran = await axios.get(`${address}/api/v1/news/filter?countryId=4`) 
+        const azerbaijan = await axios.get(`${address}/api/v1/news/filter?countryId=5`) 
         setData(data.filter((data)=>data.countryId != 1 && data.countryId != 6 && data.newsContent.file.isImage))
         setDataGeorgia(georgia.data.filter((data)=>data.newsContent.file.isImage))
         setDataTurkey(turkey.data.filter((data)=>data.newsContent.file.isImage))

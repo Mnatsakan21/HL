@@ -3,7 +3,7 @@ import {useEffect,useState} from 'react'
 import { useParams } from 'react-router-dom'
 import RichEditor from '../reactquil/RichEditor'
 import DropDownMenu from '../admincontents/dropdownmenu/DropDownMenu'
-import { categoriesfilter,categories, contentTypefilter, countries, countriesfilter } from '../../../repetitiveVariables/variables'
+import { categoriesfilter,categories, contentTypefilter, countries, countriesfilter, address } from '../../../repetitiveVariables/variables'
 
 const chooseSection = [
     {label:"Հայաստան",value:"armenia"},
@@ -56,7 +56,7 @@ const EditContentFromId = () => {
     useEffect(()=>{
         (async () => {
             try {
-                const {data} = await axios.get(`http://localhost:5005/api/v1/news/getOne/${id}`)
+                const {data} = await axios.get(`${address}/api/v1/news/getOne/${id}`)
                 setDataId(data)
                 setRichEditorValue(data.newsContent.description)
                 if(data.countryId == 1 || data.countryId == 6){
@@ -120,7 +120,7 @@ const EditContentFromId = () => {
             }
   
             try {
-            const { data } = await axios.put(`http://localhost:5005/api/v1/news/editNews/${id}`, formData)
+            const { data } = await axios.put(`${address}/api/v1/news/editNews/${id}`, formData)
   
             console.log(data)
           } catch (error) {

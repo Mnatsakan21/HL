@@ -3,6 +3,7 @@ import "./search.style.scss"
 import SearchSlice from "./searchslice/SearchSlice"
 import axios from "axios"
 import { Link } from "react-router-dom"
+import { address } from "../../repetitiveVariables/variables"
 
 
 const Search = () => {
@@ -20,7 +21,7 @@ const Search = () => {
         (async () => {
             try { 
                 if(search == "")return
-          const {data} = await axios.get(`http://localhost:5005/api/v1/news/search?search=${search}`)
+          const {data} = await axios.get(`${address}/api/v1/news/search?search=${search}`)
           setCurrentPage(1)
           setContentBegining(0)
           setContentQuantity(6)

@@ -2,6 +2,7 @@ import { useState , useEffect} from 'react'
 import './liveeditcontent.style.scss'
 import axios from 'axios'
 import { NavLink, useParams } from 'react-router-dom'
+import { address } from '../../../../../repetitiveVariables/variables'
 
 const LiveEditContent = () => {
     const [dataId,setDataId] = useState()
@@ -10,7 +11,7 @@ const LiveEditContent = () => {
   useEffect(()=>{
     (async () => {
       try {
-        const {data} = await axios.get(`http://localhost:5005/api/v1/live/getAll`)
+        const {data} = await axios.get(`${address}/api/v1/live/getAll`)
         setDataId(data.filter((data)=>data.id == id)[0])
       } catch (error) {
         console.log(error)
@@ -21,7 +22,7 @@ const LiveEditContent = () => {
   function handleDelete(){
     (async () => {
       try {
-        const {data} = await axios.delete(`http://localhost:5005/api/v1/live/delete/${id}`)
+        const {data} = await axios.delete(`${address}/api/v1/live/delete/${id}`)
         console.log(data)
       } catch (error) {
         console.log(error)

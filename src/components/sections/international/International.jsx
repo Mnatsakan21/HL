@@ -4,6 +4,7 @@ import AsideSlice from "../asideslice/AsideSlice"
 import './international.style.scss'
 import { Link } from "react-router-dom"
 import axios from "axios"
+import { address } from "../../../repetitiveVariables/variables"
 
 const International = () => {
   const [data,setData] = useState("")
@@ -16,7 +17,7 @@ const International = () => {
   useEffect(()=>{
     (async () => {
       try {
-        const {data}= await axios.get('http://localhost:5005/api/v1/news/filter?countryId=6')  
+        const {data}= await axios.get(`${address}/api/v1/news/filter?countryId=6`)  
         setData(data.filter((data)=>data.newsContent.file.isImage))
       } catch (error) {
         console.log(error)

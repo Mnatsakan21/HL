@@ -1,4 +1,4 @@
-export const address = "http://localhost:5005/"
+export const address = "http://164.92.167.71/service"
  
 export const dates = {
     '01': 'Հնվ',

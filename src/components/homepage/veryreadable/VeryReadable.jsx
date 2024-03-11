@@ -4,6 +4,7 @@ import VeryReadableNewsRight from './veryreadablenewsright/VeryReadableNewsRight
 import {useEffect, useState} from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { address } from '../../../repetitiveVariables/variables'
 
 const VeryReadable = () => {
   const [dataMostWiew,setDataMostWiew] = useState()
@@ -11,7 +12,7 @@ const VeryReadable = () => {
   useEffect(()=>{
     (async () => {
       try {
-        const {data}= await axios.get('http://localhost:5005/api/v1/news/getMostViewed')
+        const {data}= await axios.get(`${address}/api/v1/news/getMostViewed`)
         setDataMostWiew(data)
       } catch (error) {
         console.log(error)

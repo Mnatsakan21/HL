@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom"
 import "./liveeditid.style.scss"
 import { useEffect, useState } from "react"
 import axios from "axios"
+import { address } from "../../../../../repetitiveVariables/variables"
 const LiveEditId = () => {
     const [url,setUrl] = useState()
     const [title,setTitle] = useState()
@@ -10,7 +11,7 @@ const LiveEditId = () => {
     useEffect(()=>{
         (async () => {
             try {
-                const {data} = await axios.get(`http://localhost:5005/api/v1/live/getAll`) 
+                const {data} = await axios.get(`${address}/api/v1/live/getAll`) 
                 const dataFilter = data.filter((data)=>data.id == id)[0]
                 setUrl(dataFilter.url)
                 setTitle(dataFilter.title)
@@ -29,7 +30,7 @@ const LiveEditId = () => {
             formData.append('title', title)
         
             try {
-            const { data } = await axios.put(`http://localhost:5005/api/v1/live/edit/${id}`,formData)
+            const { data } = await axios.put(`${address}/api/v1/live/edit/${id}`,formData)
   
             console.log(data)
           } catch (error) {

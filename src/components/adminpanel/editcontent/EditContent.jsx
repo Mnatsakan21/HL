@@ -4,7 +4,7 @@ import { useState,useRef, useEffect } from "react"
 import FilterContent from "./filtercontent/FilterContent"
 import { Link, Outlet, useParams } from "react-router-dom"
 import axios from "axios"
-import { categories, countriesfilter } from "../../../repetitiveVariables/variables"
+import { categories, countriesfilter , address} from "../../../repetitiveVariables/variables"
 import LiveContent from "./livecontent/LiveContent"
 
 const chooseSection = [
@@ -68,29 +68,29 @@ const EditContent = () => {
 
     useEffect(()=>{
       (async () => {
-        const lives = await axios.get('http://localhost:5005/api/v1/live/getAll')
+        const lives = await axios.get(`${address}/api/v1/live/getAll`)
         try {
           if(sectionValue == 'all' && subsectionValue == "all") {
-            const {data}= await axios.get('http://localhost:5005/api/v1/news/getAll')
+            const {data}= await axios.get(`${address}/api/v1/news/getAll`)
             handleFilter(data.concat(lives.data))
             
           }else if(sectionValue == 'international'){
-            const {data}= await axios.get(`http://localhost:5005/api/v1/news/filter?countryId=6`)
+            const {data}= await axios.get(`${address}/api/v1/news/filter?countryId=6`)
             handleFilter(data)
           }else if(sectionValue == 'armenia' && subsectionValue == "all"){
-            const {data}= await axios.get(`http://localhost:5005/api/v1/news/filter?countryId=1`)
+            const {data}= await axios.get(`${address}/api/v1/news/filter?countryId=1`)
             handleFilter(data)
           }else if(sectionValue == "region"){
             if(subsectionValue == "all"){
-              const {data}= await axios.get(`http://localhost:5005/api/v1/news/getAll`)
+              const {data}= await axios.get(`${address}/api/v1/news/getAll`)
               const dataRegion = data.filter((data)=>data.countryId != 1 && data.countryId != 6)
               handleFilter(dataRegion)
             }else{
-              const {data}= await axios.get(`http://localhost:5005/api/v1/news/filter?countryId=${countriesfilter[subsectionValue]}`)
+              const {data}= await axios.get(`${address}/api/v1/news/filter?countryId=${countriesfilter[subsectionValue]}`)
               handleFilter(data)
             }
           }else{
-            const {data}= await axios.get(`http://localhost:5005/api/v1/news/filter?countryId=${countriesfilter[sectionValue]}&categoryId=${categories[subsectionValue]}`)
+            const {data}= await axios.get(`${address}/api/v1/news/filter?countryId=${countriesfilter[sectionValue]}&categoryId=${categories[subsectionValue]}`)
             handleFilter(data)
             
           }

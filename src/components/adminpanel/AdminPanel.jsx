@@ -5,6 +5,7 @@ import AdminContents from './admincontents/AdminContents'
 import {NavLink } from 'react-router-dom'
 import axios from 'axios'
 import { request , response } from './interceptor.js'
+import { address } from '../../repetitiveVariables/variables.js'
 
 const AdminPanel = () => {
     const [data,setData] = useState({login:"",password:""})
@@ -18,7 +19,7 @@ const AdminPanel = () => {
     function handleClick (){
   
         
-        axios.post('http://localhost:5005/api/v1/admin/login',{
+        axios.post(`${address}/api/v1/admin/login`,{
             email:data.login,
             password:data.password
           })

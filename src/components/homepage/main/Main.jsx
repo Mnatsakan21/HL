@@ -5,6 +5,7 @@ import Watch from '../watch/Watch'
 import AllNews from '../allnews/AllNews'
 import axios from 'axios'
 import { useEffect,useState } from 'react'
+import { address } from '../../../repetitiveVariables/variables'
 
 
 const Main = () => {
@@ -14,7 +15,7 @@ const Main = () => {
   useEffect(()=>{
     (async () => {
       try {
-        const {data}= await axios.get('http://localhost:5005/api/v1/news/getAll')
+        const {data}= await axios.get(`${address}/api/v1/news/getAll`)
         setAllNews(data.filter((data)=>data.newsContent.file.isImage))
       } catch (error) {
         console.log(error)

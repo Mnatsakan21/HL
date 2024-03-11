@@ -12,7 +12,7 @@ const SingleEditContent = () => {
   useEffect(()=>{
     (async () => {
       try {
-        const {data} = await axios.get(`http://localhost:5005/api/v1/news/getOne/${id}`)
+        const {data} = await axios.get(`${address}/api/v1/news/getOne/${id}`)
         setDataId(data)
       } catch (error) {
         console.log(error)
@@ -23,7 +23,7 @@ const SingleEditContent = () => {
   function handleDelete(){
     (async () => {
       try {
-        const {data} = await axios.delete(`http://localhost:5005/api/v1/news/delete/${id}`)
+        const {data} = await axios.delete(`${address}/api/v1/news/delete/${id}`)
         console.log(data)
       } catch (error) {
         console.log(error)

@@ -17,8 +17,8 @@ const LiveStream = () => {
     useEffect(()=>{
       (async () => {
         try {
-          const {data}= await axios.get('http://localhost:5005/api/v1/news/getAll')
-          const lives = await axios.get('http://localhost:5005/api/v1/live/getAll')
+          const {data}= await axios.get(`${address}/api/v1/news/getAll`)
+          const lives = await axios.get(`${address}/api/v1/live/getAll`)
           setDataLives(lives.data)
           setDataWatch(data.filter((data)=>!data.newsContent.file.isImage && data))
         } catch (error) {

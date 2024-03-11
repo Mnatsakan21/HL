@@ -3,7 +3,7 @@ import AsideSlice from "../asideslice/AsideSlice"
 import "./subsection.style.scss"
 import { Link, useLocation } from "react-router-dom"
 import axios from "axios"
-import { categories,countriesfilter } from "../../../repetitiveVariables/variables"
+import { address, categories,countriesfilter } from "../../../repetitiveVariables/variables"
 
 const Subsection = ({title}) => {
   const [data,setData] = useState("")
@@ -19,10 +19,10 @@ const Subsection = ({title}) => {
     (async () => {
       try {
         if(location[1] == "armenia"){
-          const {data} = await axios.get(`http://localhost:5005/api/v1/news/filter?countryId=1&categoryId=${categories[location[2]]}`) 
+          const {data} = await axios.get(`${address}/api/v1/news/filter?countryId=1&categoryId=${categories[location[2]]}`) 
           setData(data)
         }else{
-          const {data} = await axios.get(`http://localhost:5005/api/v1/news/filter?countryId=${countriesfilter[location[2]]}`) 
+          const {data} = await axios.get(`${address}/api/v1/news/filter?countryId=${countriesfilter[location[2]]}`) 
           setData(data)
         }
 
