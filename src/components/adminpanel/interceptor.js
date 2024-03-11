@@ -18,7 +18,7 @@ export function response (){
                 const config = error?.config 
                 if (error?.response?.status == 401) { 
                     
-                    const {data} = await axios.get('http://164.92.167.71/service/api/v1/admin/refresh',{withCredentials:true
+                    const {data} = await axios.get('http://164.92.254.73/service/api/v1/admin/refresh',{withCredentials:true
                 })
                       console.log(data)
                     config.headers.Authorization = `Bearer ${data.accessToken}`
