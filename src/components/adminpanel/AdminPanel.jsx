@@ -1,11 +1,9 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import "./adminpanel.style.scss"
 import AdminLogin from './adminlogin/AdminLogin'
 import AdminContents from './admincontents/AdminContents'
-import {NavLink } from 'react-router-dom'
-import axios from 'axios'
-import { request , response } from './interceptor.js'
-import { address } from '../../repetitiveVariables/variables.js'
+import axios from './interceptor.js'
+import { NavLink } from 'react-router-dom'
 
 const AdminPanel = () => {
     const [data,setData] = useState({login:"",password:""})
@@ -15,18 +13,26 @@ const AdminPanel = () => {
     function handleChange({value,name}){
         setData({...data,[name]:value})
     }
+
+    useEffect(() => {
+      axios.get('/api/v1/admin/authMe').then(({data}) => {
+        localStorage.setItem('accessToken', data.accessToken)
+        localStorage.setItem('refreshToken', data.refreshToken)
+        setAdminPanel(true)
+      })
+    }, [])
     
     function handleClick (){
-  
-        
-        axios.post(`${address}/api/v1/admin/login`,{
-            email:data.login,
-            password:data.password
-          })
+        axios.post('/api/v1/admin/login',{
+            email: data.login,
+            password: data.password
+          },
+
+          )
           .then(({data}) => {
+            localStorage.setItem('accessToken', data.accessToken)
+            localStorage.setItem('refreshToken', data.refreshToken)
             console.log(data)
-            request(data)
-            response()
             setAdminPanel(true)
           })
           .catch(function (error) {
@@ -39,7 +45,7 @@ const AdminPanel = () => {
     return (
     <div className='admin_panel_container'>
         <div className='admin_panel_logo'>
-            <img src="/img/Hetaxuyz LOGO.png" alt="Հետախույզ լրատվական լոգո" />
+            <NavLink to="/"><img src="/img/Hetaxuyz LOGO.png" alt="Հետախույզ լրատվական լոգո" /></NavLink>
             <hr/>
         </div>
         {!adminPanel?

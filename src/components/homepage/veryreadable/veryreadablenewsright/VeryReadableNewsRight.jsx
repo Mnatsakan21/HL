@@ -6,7 +6,7 @@ const VeryReadableNewsRight = ({data:{title,description,img,country}}) => {
   return (
     <div className='very_readable_news_container'>
         <div style={{
-          backgroundImage:`url(${address+img})`
+          backgroundImage:`url(${address+"/"+img})`
         }} className='very_readable_img'></div>
         <div className='very_readable_news_data'>
           <h3>{title}</h3>

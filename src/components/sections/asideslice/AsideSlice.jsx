@@ -12,7 +12,7 @@ const AsideSlice = ({data:{createdAt,title,description,img}}) => {
         <p>{description}</p>
       </div>
       <div>
-        <img src={address+img} alt="Լրատվական նկար" />
+        <img src={address+"/"+img} alt="Լրատվական նկար" />
       </div>
       </div>
     </div>

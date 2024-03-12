@@ -1,30 +1,47 @@
 import axios from "axios"
+import { address } from "../../repetitiveVariables/variables";
 
 
-export function request(data){
-    axios.interceptors.request.use(config => {
-        console.log(config)
-        config.headers.Authorization = `Bearer ${data.accessToken}`
-         return config
-       })
-} 
+const instance = axios.create({
+    baseURL: address,
+})
 
 
-export function response (){
-  
-    axios.interceptors.response.use( 
-        response => response,
-            async error => {    
-                const config = error?.config 
-                if (error?.response?.status == 401) { 
-                    
-                    const {data} = await axios.get('http://164.92.254.73/service/api/v1/admin/refresh',{withCredentials:true
-                })
-                      console.log(data)
-                    config.headers.Authorization = `Bearer ${data.accessToken}`
-                    return axios(config)
-                } 
-                return Promise.reject(error)
+instance.interceptors.request.use(config => {
+        config.headers = {
+            ...config.headers,
+            Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        }
+        return config
+    })
+
+instance.interceptors.response.use( 
+        response => response, 
+        async error => { 
+            const config = error?.config; 
+
+            if (error?.response?.status === 401 && !config?.sent) { 
+                config.sent = true; 
                 
-        })
-} 
+                const {data} = await axios.get(address+'/api/v1/admin/refresh', {
+                    params: {
+                        refreshToken: localStorage.getItem('refreshToken')
+                    } 
+                })
+                console.log(data)
+                if (data?.accessToken) { 
+                    localStorage.setItem('accessToken', data.accessToken)
+                    localStorage.setItem('refreshToken', data.refreshToken)
+                    config.headers = { 
+                        ...config.headers, 
+                        Authorization: data?.accessToken, 
+                    }; 
+                } 
+     
+                return instance(config); 
+            } 
+            return Promise.reject(error); 
+        }, 
+    );
+
+export default instance

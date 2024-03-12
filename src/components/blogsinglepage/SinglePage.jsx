@@ -15,7 +15,8 @@ const SinglePage = () => {
     (async () => {
       try {
         const {data} = await axios.get(`${address}/api/v1/news/getOne/${id}`)
-        const {data:{mostViewedNews,relatesNews}} = await axios.get(`${address}/api/v1/news/getMostViewedAndRelates/${data.categoryId}`)
+        console.log(data)
+        const {data:{mostViewedNews,relatesNews}} = await axios.get(`${address}/api/v1/news/getMostViewedAndRelates/${data.categoryId?data.categoryId:1}`)
         setMostViewedNews(mostViewedNews)
         setRelatesNews(relatesNews)
         setDataId(data)
@@ -42,7 +43,7 @@ const SinglePage = () => {
         <div className="single_page_title">
             <h2>{dataId && dataId.title}</h2>
            
-           {dataId && <img src={address+dataId.newsContent.file.url} alt="Լրատվական Նկար" />}
+           {dataId && <img src={address+"/"+dataId.newsContent.file.url} alt="Լրատվական Նկար" />}
             <h3>Նկարի վերնագիր {dataId && dataId.newsContent.file.title}</h3>
             <h3>Նկարի հեղինակ {dataId && dataId.newsContent.author}</h3>
         </div>

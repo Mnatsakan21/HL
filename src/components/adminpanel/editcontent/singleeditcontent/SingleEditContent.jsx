@@ -1,8 +1,8 @@
 import { NavLink, useParams } from 'react-router-dom'
 import './singleeditcontent.style.scss'
 import { useState , useEffect } from 'react'
-import axios from 'axios'
 import {address,handleDate } from '../../../../repetitiveVariables/variables'
+import axios from '../../interceptor'
 
 
 const SingleEditContent = () => {
@@ -58,7 +58,7 @@ const SingleEditContent = () => {
         </div>
         <div className="edit_single_title">
             <h2>{dataId &&dataId.title}</h2>
-            {dataId && !dataId.newsContent.file?.isImage?<iframe src={address+dataId.newsContent.file.url}></iframe> :dataId && <img src={address+dataId.newsContent.file?.url} alt="Լրատվական Նկար" />}
+            {dataId && !dataId.newsContent.file?.isImage?<iframe src={address+"/"+dataId.newsContent.file.url}></iframe> :dataId && <img src={address+"/"+dataId.newsContent.file?.url} alt="Լրատվական Նկար" />}
             <h3>Նկարի վերնագիր {dataId && dataId.newsContent.file?.title}</h3>
             <h3>Նկարի հեղինակ {dataId && dataId.newsContent.file?.author}</h3>
 

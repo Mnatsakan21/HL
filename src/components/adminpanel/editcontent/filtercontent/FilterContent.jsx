@@ -6,7 +6,7 @@ const FilterContent = ({data:{createdAt,title,description,img,categoryId,country
   return (
     <div className="filter_content_container">
       <div className='filter_content_img_container'>
-        <img src={address+img} alt="Լրատվական նկար" />
+        <img src={address+"/"+img} alt="Լրատվական նկար" />
         {isImage?null:<div>
           <img src="/img/fluentvideo.png" alt="" />
           <p>Հոլովակ</p>

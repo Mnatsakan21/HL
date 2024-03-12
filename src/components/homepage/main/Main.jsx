@@ -22,7 +22,7 @@ const Main = () => {
       }
     })()
   },[])
-  
+ 
   return (
     <main className='home_page'>
         <TodayNews/>

@@ -1,9 +1,9 @@
-import axios from 'axios'
 import {useEffect,useState} from 'react'
 import { useParams } from 'react-router-dom'
 import RichEditor from '../reactquil/RichEditor'
 import DropDownMenu from '../admincontents/dropdownmenu/DropDownMenu'
 import { categoriesfilter,categories, contentTypefilter, countries, countriesfilter, address } from '../../../repetitiveVariables/variables'
+import axios from '../interceptor'
 
 const chooseSection = [
     {label:"Հայաստան",value:"armenia"},

@@ -11,7 +11,7 @@ const NewsContainer = ({data:{category,createdAt,title,description,img,country,c
         <h4 className={handleBorderColor()}>
           {countryId == 1?category.title:countryId == 6?"Միջազգային":country.title}
         </h4>
-        <img src={address+img} alt="Լրատվական նկար" />
+        <img src={address+"/"+img} alt="Լրատվական նկար" />
         <span>{handleDate(createdAt)}</span>
         <h3>{title}</h3>
         <p>{description}</p>

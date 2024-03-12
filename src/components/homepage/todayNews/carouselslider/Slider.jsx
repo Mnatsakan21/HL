@@ -45,7 +45,7 @@ export default function Slider() {
            return <SwiperSlide key={key}>
                     <Link to={"/news/"+id}>
                     <div className='today_news_slider'>
-                        <div className="slider_img" style={{backgroundImage:`url(${address+img})`}}></div>
+                        <div className="slider_img" style={{backgroundImage:`url(${address+"/"+img})`}}></div>
                         <div className="today_news_text">
                           <h3>{title}</h3>
                           <p>{description}</p>

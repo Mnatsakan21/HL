@@ -67,44 +67,46 @@ const EditContent = () => {
     }
 
     useEffect(()=>{
-      (async () => {
-        const lives = await axios.get(`${address}/api/v1/live/getAll`)
-        try {
-          if(sectionValue == 'all' && subsectionValue == "all") {
-            const {data}= await axios.get(`${address}/api/v1/news/getAll`)
-            handleFilter(data.concat(lives.data))
-            
-          }else if(sectionValue == 'international'){
-            const {data}= await axios.get(`${address}/api/v1/news/filter?countryId=6`)
-            handleFilter(data)
-          }else if(sectionValue == 'armenia' && subsectionValue == "all"){
-            const {data}= await axios.get(`${address}/api/v1/news/filter?countryId=1`)
-            handleFilter(data)
-          }else if(sectionValue == "region"){
-            if(subsectionValue == "all"){
+      if(!id){
+        (async () => {
+          const lives = await axios.get(`${address}/api/v1/live/getAll`)
+          try {
+            if(sectionValue == 'all' && subsectionValue == "all") {
               const {data}= await axios.get(`${address}/api/v1/news/getAll`)
-              const dataRegion = data.filter((data)=>data.countryId != 1 && data.countryId != 6)
-              handleFilter(dataRegion)
-            }else{
-              const {data}= await axios.get(`${address}/api/v1/news/filter?countryId=${countriesfilter[subsectionValue]}`)
+              handleFilter(data.concat(lives.data))
+              
+            }else if(sectionValue == 'international'){
+              const {data}= await axios.get(`${address}/api/v1/news/filter?countryId=6`)
               handleFilter(data)
+            }else if(sectionValue == 'armenia' && subsectionValue == "all"){
+              const {data}= await axios.get(`${address}/api/v1/news/filter?countryId=1`)
+              handleFilter(data)
+            }else if(sectionValue == "region"){
+              if(subsectionValue == "all"){
+                const {data}= await axios.get(`${address}/api/v1/news/getAll`)
+                const dataRegion = data.filter((data)=>data.countryId != 1 && data.countryId != 6)
+                handleFilter(dataRegion)
+              }else{
+                const {data}= await axios.get(`${address}/api/v1/news/filter?countryId=${countriesfilter[subsectionValue]}`)
+                handleFilter(data)
+              }
+            }else{
+              const {data}= await axios.get(`${address}/api/v1/news/filter?countryId=${countriesfilter[sectionValue]}&categoryId=${categories[subsectionValue]}`)
+              handleFilter(data)
+              
             }
-          }else{
-            const {data}= await axios.get(`${address}/api/v1/news/filter?countryId=${countriesfilter[sectionValue]}&categoryId=${categories[subsectionValue]}`)
-            handleFilter(data)
             
+          } catch (error) {
+            console.log(error)
           }
-          
-        } catch (error) {
-          console.log(error)
-        }
-      })()
-      setCurrentPage(1)
-      setContentBegining(0)
-      setContentQuantity(6)
+        })()
+        setCurrentPage(1)
+        setContentBegining(0)
+        setContentQuantity(6)
+      }
       
-    },[sectionValue,subsectionValue,contentType])
-
+    },[sectionValue,subsectionValue,contentType,id])
+    
     function handleNextPage () {
       if(currentPage<maxPages){
         setCurrentPage(currentPage+1)

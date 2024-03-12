@@ -1,8 +1,9 @@
 import { useParams } from "react-router-dom"
 import "./liveeditid.style.scss"
 import { useEffect, useState } from "react"
-import axios from "axios"
 import { address } from "../../../../../repetitiveVariables/variables"
+import axios from "../../../interceptor"
+
 const LiveEditId = () => {
     const [url,setUrl] = useState()
     const [title,setTitle] = useState()

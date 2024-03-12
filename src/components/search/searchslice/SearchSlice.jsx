@@ -5,7 +5,7 @@ const SearchSlice = ({data:{createdAt,title,description,img}}) => {
   return (
     <div className="search_slice_container">
       <div>
-        <img src={address+img} alt="Լրատվական նկար" />
+        <img src={address+"/"+img} alt="Լրատվական նկար" />
       </div>
       <div>
       <div className="search_slice_texts">

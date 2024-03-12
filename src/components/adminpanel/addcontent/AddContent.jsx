@@ -3,7 +3,7 @@ import {useRef, useState,useEffect} from 'react'
 import DropDownMenu from '../admincontents/dropdownmenu/DropDownMenu'
 import RichEditor from "../reactquil/RichEditor"
 import { categories, countriesfilter , address } from "../../../repetitiveVariables/variables"
-import axios from "axios"
+import axios from "../interceptor"
 
 const chooseSection = [
     {label:"Հայաստան",value:"armenia"},

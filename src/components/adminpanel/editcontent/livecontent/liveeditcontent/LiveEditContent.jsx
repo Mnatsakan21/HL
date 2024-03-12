@@ -1,8 +1,8 @@
 import { useState , useEffect} from 'react'
 import './liveeditcontent.style.scss'
-import axios from 'axios'
 import { NavLink, useParams } from 'react-router-dom'
 import { address } from '../../../../../repetitiveVariables/variables'
+import axios from '../../../interceptor'
 
 const LiveEditContent = () => {
     const [dataId,setDataId] = useState([])
