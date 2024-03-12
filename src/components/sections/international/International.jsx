@@ -7,7 +7,7 @@ import axios from "axios"
 import { address } from "../../../repetitiveVariables/variables"
 
 const International = () => {
-  const [data,setData] = useState("")
+  const [data,setData] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
   const [contentBeginning,setContentBegining] = useState(0)
   const [contentQuantity,setContentQuantity] = useState(8)

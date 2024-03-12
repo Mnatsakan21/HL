@@ -48,7 +48,7 @@ const EditContent = () => {
     const [contentBeginning,setContentBegining] = useState(0)
     const [contentQuantity,setContentQuantity] = useState(6)
     
-    const [data,setData] = useState("")
+    const [data,setData] = useState([])
 
     const containerRef = useRef(null)
     const maxPages = Math.ceil(data.length/6)

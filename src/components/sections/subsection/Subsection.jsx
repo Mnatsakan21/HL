@@ -6,7 +6,7 @@ import axios from "axios"
 import { address, categories,countriesfilter } from "../../../repetitiveVariables/variables"
 
 const Subsection = ({title}) => {
-  const [data,setData] = useState("")
+  const [data,setData] = useState([])
   const location = useLocation().pathname.split("/")
 
   const [currentPage, setCurrentPage] = useState(1)

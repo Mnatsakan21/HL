@@ -8,10 +8,10 @@ import ArticleSubsection from "../article/ArticleSubsection"
 
 const Armenia = () => {
     const [data,setData] = useState()
-    const [dataMilitary,setDataMilitary] = useState()
-    const [dataPolitics,setDataPolitics] = useState()
-    const [dataLegal,setDataLegal] = useState()
-    const [dataSociety,setDataSociety] = useState()
+    const [dataMilitary,setDataMilitary] = useState([])
+    const [dataPolitics,setDataPolitics] = useState([])
+    const [dataLegal,setDataLegal] = useState([])
+    const [dataSociety,setDataSociety] = useState([])
     
     
     useEffect(()=>{

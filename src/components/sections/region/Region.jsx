@@ -6,11 +6,11 @@ import { Link } from "react-router-dom"
 import { address } from "../../../repetitiveVariables/variables"
 
 const Region = () => {
-  const [data,setData] = useState()
-  const [dataGeorgia,setDataGeorgia] = useState()
-  const [dataTurkey,setDataTurkey] = useState()
-  const [dataIran,setDataIran] = useState()
-  const [dataAzerbaijan,setDataAzerbaijan] = useState()
+  const [data,setData] = useState([])
+  const [dataGeorgia,setDataGeorgia] = useState([])
+  const [dataTurkey,setDataTurkey] = useState([])
+  const [dataIran,setDataIran] = useState([])
+  const [dataAzerbaijan,setDataAzerbaijan] = useState([])
 
   useEffect(()=>{
     (async () => {

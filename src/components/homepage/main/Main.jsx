@@ -10,7 +10,7 @@ import { address } from '../../../repetitiveVariables/variables'
 
 const Main = () => {
  
-  const [dataAllNews,setAllNews] = useState()
+  const [dataAllNews,setAllNews] = useState([])
 
   useEffect(()=>{
     (async () => {

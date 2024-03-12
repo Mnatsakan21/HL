@@ -9,7 +9,7 @@ import { address } from "../../repetitiveVariables/variables"
 const Search = () => {
     const inputRef = useRef()
     const [search,setSearch] = useState()
-    const [searchData,setSearchData] = useState("")
+    const [searchData,setSearchData] = useState([])
 
     const [currentPage, setCurrentPage] = useState(1)
     const [contentBeginning,setContentBegining] = useState(0)
@@ -73,8 +73,7 @@ const Search = () => {
 
         {searchData==0?search && <h2>Արդյունք չի գտնվել</h2>:searchData && 
         <>
-        {searchData.map((data,key)=>{
-          console.log(data)
+        {searchData && searchData.map((data,key)=>{
           if(key>=contentQuantity || key<contentBeginning)return
           return <Link  key={key} to={(data.newsContent?.file.isImage?"/news/":"/videos/")+data.id}>
           <SearchSlice data={data}/>

@@ -4,14 +4,14 @@ import "./livestream.style.scss"
 import LiveStreamSlice from "./livestreamslice/LiveStreamSlice"
 import axios from "axios"
 import { NavLink, useParams } from "react-router-dom"
-
+import { address } from "../../repetitiveVariables/variables"
 
 const LiveStream = () => {
     
     const [quantity,setQuantity] = useState(5)
     const [manyViewsQuantity,setManyViewsQuantity] = useState(1)
-    const [dataWatch,setDataWatch] = useState()
-    const [dataLives,setDataLives] = useState()
+    const [dataWatch,setDataWatch] = useState([])
+    const [dataLives,setDataLives] = useState([])
     const {id} = useParams()
     
     useEffect(()=>{

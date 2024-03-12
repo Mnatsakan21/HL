@@ -5,7 +5,7 @@ import { Link, useLocation } from "react-router-dom"
 
 
 
-const AllNews = ({title,data}) => {
+const AllNews = ({title,data=[]}) => {
     const [quantity,setQuantity] = useState(5)
     const {pathname} = useLocation()
 

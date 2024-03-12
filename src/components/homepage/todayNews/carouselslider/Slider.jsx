@@ -13,7 +13,7 @@ import { Link } from "react-router-dom"
 export default function Slider() {
    
     const swiperRef = useRef()
-    const [dataToday,setDataToday] = useState()
+    const [dataToday,setDataToday] = useState([])
 
 
     useEffect(()=>{

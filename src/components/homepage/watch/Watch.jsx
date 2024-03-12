@@ -5,7 +5,7 @@ import axios from "axios"
 import { useEffect , useState} from "react"
 import { address } from "../../../repetitiveVariables/variables"
 const Watch = () => {
-    const [dataWatch,setDataWatch] = useState()
+    const [dataWatch,setDataWatch] = useState([])
   
     useEffect(()=>{
       (async () => {

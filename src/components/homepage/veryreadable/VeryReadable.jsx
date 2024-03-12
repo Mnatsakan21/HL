@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import { address } from '../../../repetitiveVariables/variables'
 
 const VeryReadable = () => {
-  const [dataMostWiew,setDataMostWiew] = useState()
+  const [dataMostWiew,setDataMostWiew] = useState([])
   
   useEffect(()=>{
     (async () => {

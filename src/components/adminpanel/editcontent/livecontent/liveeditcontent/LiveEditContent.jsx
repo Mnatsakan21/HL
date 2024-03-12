@@ -5,7 +5,7 @@ import { NavLink, useParams } from 'react-router-dom'
 import { address } from '../../../../../repetitiveVariables/variables'
 
 const LiveEditContent = () => {
-    const [dataId,setDataId] = useState()
+    const [dataId,setDataId] = useState([])
     const {id} = useParams()
 
   useEffect(()=>{
