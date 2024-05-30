@@ -32,7 +32,6 @@ const AdminPanel = () => {
           .then(({data}) => {
             localStorage.setItem('accessToken', data.accessToken)
             localStorage.setItem('refreshToken', data.refreshToken)
-            console.log(data)
             setAdminPanel(true)
           })
           .catch(function (error) {

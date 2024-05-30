@@ -22,7 +22,7 @@ const ArticleSubsection = ({title,data,to=""}) => {
     <div id={to} ref={advisRef} className="aside_container">
         <h2 className={handleAfterColor()}>{title}</h2>
         <div>
-        {data && data.map((data,key)=>{
+        {Array.isArray(data) && data.map((data,key)=>{
           if(key>2)return
             return <Link key={key} to={"/news/"+data.id}>
             <AsideSlice  data={data} />

@@ -20,11 +20,11 @@ const Region = () => {
         const georgia = await axios.get(`${address}/api/v1/news/filter?countryId=3`) 
         const iran = await axios.get(`${address}/api/v1/news/filter?countryId=4`) 
         const azerbaijan = await axios.get(`${address}/api/v1/news/filter?countryId=5`) 
-        setData(data.filter((data)=>data.countryId != 1 && data.countryId != 6 && data.newsContent.file.isImage))
-        setDataGeorgia(georgia.data.filter((data)=>data.newsContent.file.isImage))
-        setDataTurkey(turkey.data.filter((data)=>data.newsContent.file.isImage))
-        setDataIran(iran.data.filter((data)=>data.newsContent.file.isImage))
-        setDataAzerbaijan(azerbaijan.data.filter((data)=>data.newsContent.file.isImage))
+        Array.isArray(data) && setData(data.filter((data)=>data.countryId != 1 && data.countryId != 6 && data.newsContent.file.isImage))
+        Array.isArray(georgia.data) && setDataGeorgia(georgia.data.filter((data)=>data.newsContent.file.isImage))
+        Array.isArray(turkey.data) && setDataTurkey(turkey.data.filter((data)=>data.newsContent.file.isImage))
+        Array.isArray(iran.data) && setDataIran(iran.data.filter((data)=>data.newsContent.file.isImage))
+        Array.isArray(azerbaijan.data) && setDataAzerbaijan(azerbaijan.data.filter((data)=>data.newsContent.file.isImage))
       } catch (error) {
         console.log(error)
       }

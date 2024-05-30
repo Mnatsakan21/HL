@@ -64,7 +64,6 @@ const AddContent = () => {
           try {
             const  data = await axios.post(`${address}/api/v1/live/create`, formData)
             
-            console.log(data)
           } catch (error) {
             console.log(error)
           }
@@ -108,7 +107,6 @@ const AddContent = () => {
               Authorization: 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQURNSU4iLCJpZCI6NSwiaWF0IjoxNzA5NzQ1NDY4LCJleHAiOjE3MDk3NDYzNjh9.kHe_YFYmvsHma1eNunFQnx4W-6-uZch-kpkRRVtaO30',
             }})
             
-            console.log(data)
           } catch (error) {
             console.log(error)
           }

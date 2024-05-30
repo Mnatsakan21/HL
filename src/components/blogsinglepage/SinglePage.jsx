@@ -15,7 +15,6 @@ const SinglePage = () => {
     (async () => {
       try {
         const {data} = await axios.get(`${address}/api/v1/news/getOne/${id}`)
-        console.log(data)
         const {data:{mostViewedNews,relatesNews}} = await axios.get(`${address}/api/v1/news/getMostViewedAndRelates/${data.categoryId?data.categoryId:1}`)
         setMostViewedNews(mostViewedNews)
         setRelatesNews(relatesNews)

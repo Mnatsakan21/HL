@@ -12,7 +12,7 @@ const LiveEditContent = () => {
     (async () => {
       try {
         const {data} = await axios.get(`${address}/api/v1/live/getAll`)
-        setDataId(data.filter((data)=>data.id == id)[0])
+        Array.isArray(data) && setDataId(data.filter((data)=>data.id == id)[0])
       } catch (error) {
         console.log(error)
       }
@@ -23,7 +23,6 @@ const LiveEditContent = () => {
     (async () => {
       try {
         const {data} = await axios.delete(`${address}/api/v1/live/delete/${id}`)
-        console.log(data)
       } catch (error) {
         console.log(error)
       }
