@@ -69,7 +69,7 @@ const Subsection = ({title}) => {
             <h3 className={handleAfterColor()}>{title}</h3>
             
             <div>
-            {data && data.map((data,key)=>{
+            {Array.isArray(data) && data.map((data,key)=>{
               if(key>=contentQuantity || key<contentBeginning)return
                 return <Link key={key} to={"/news/"+ data.id}><AsideSlice data={data}/></Link>
 

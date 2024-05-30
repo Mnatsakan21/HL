@@ -19,8 +19,8 @@ const LiveStream = () => {
         try {
           const {data}= await axios.get(`${address}/api/v1/news/getAll`)
           const lives = await axios.get(`${address}/api/v1/live/getAll`)
-          setDataLives(lives.data)
-          setDataWatch(data.filter((data)=>!data.newsContent.file.isImage && data))
+          Array.isArray(lives.data) && setDataLives(lives.data)
+          Array.isArray(data) && setDataWatch(data.filter((data)=>!data.newsContent.file.isImage && data))
         } catch (error) {
           console.log(error)
         }
@@ -56,7 +56,7 @@ const LiveStream = () => {
         <div className="live_streams_additional">
             <h2>Լրացուցիչ ուղիղ եթերներ</h2>
             <div>
-                {dataLives && dataLives.map(({url,title,id},key)=>{
+                {Array.isArray(dataLives) && dataLives.map(({url,title,id},key)=>{
                     if(quantity<key) return
                     return <NavLink key={key} to={"/live/"+id}><LiveStreamSlice url={url} title={title} /></NavLink>
                 })}
@@ -68,7 +68,7 @@ const LiveStream = () => {
         <div className="many_views_container">
             <h2>Շատ դիտվածներ</h2>
             <div>
-               {dataWatch && dataWatch.map((data,key)=>{
+               {Array.isArray(dataWatch) && dataWatch.map((data,key)=>{
                     if(manyViewsQuantity<key)return
                 return <NavLink to={'/videos/'+data.id} key={key}><WatchClip  data={data}/></NavLink>
                })}

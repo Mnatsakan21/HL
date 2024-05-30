@@ -15,8 +15,11 @@ const Main = () => {
   useEffect(()=>{
     (async () => {
       try {
+
         const {data}= await axios.get(`${address}/api/v1/news/getAll`)
-        setAllNews(data.filter((data)=>data.newsContent.file.isImage))
+        if(Array.isArray(data)){
+          setAllNews(data.filter((data)=>data.newsContent.file.isImage))
+        }
       } catch (error) {
         console.log(error)
       }

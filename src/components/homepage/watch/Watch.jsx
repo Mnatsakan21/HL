@@ -11,7 +11,9 @@ const Watch = () => {
       (async () => {
         try {
           const {data}= await axios.get(`${address}/api/v1/news/getAll`)
-          setDataWatch(data.filter((data)=>!data.newsContent.file.isImage && data))
+          if(Array.isArray(data)){
+            setDataWatch(data.filter((data)=>!data.newsContent.file.isImage && data))
+          }
         } catch (error) {
           console.log(error)
         }
@@ -22,7 +24,7 @@ const Watch = () => {
     <section className="watch_container">
       <h2>Դիտել</h2>
         <div className="watch_clip">
-          {dataWatch && dataWatch.map((data,key)=>{
+          {Array.isArray(dataWatch) && dataWatch.map((data,key)=>{
             if(key>=2)return
             return <Link key={key} to={"videos/"+data.id}><WatchClip data={data}/></Link>    
             })}            

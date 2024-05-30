@@ -73,26 +73,26 @@ const EditContent = () => {
           try {
             if(sectionValue == 'all' && subsectionValue == "all") {
               const {data}= await axios.get(`${address}/api/v1/news/getAll`)
-              handleFilter(data.concat(lives.data))
+              Array.isArray(data) && handleFilter(data.concat(lives.data))
               
             }else if(sectionValue == 'international'){
               const {data}= await axios.get(`${address}/api/v1/news/filter?countryId=6`)
-              handleFilter(data)
+              Array.isArray(data) && handleFilter(data)
             }else if(sectionValue == 'armenia' && subsectionValue == "all"){
               const {data}= await axios.get(`${address}/api/v1/news/filter?countryId=1`)
-              handleFilter(data)
+              Array.isArray(data) && handleFilter(data)
             }else if(sectionValue == "region"){
               if(subsectionValue == "all"){
                 const {data}= await axios.get(`${address}/api/v1/news/getAll`)
                 const dataRegion = data.filter((data)=>data.countryId != 1 && data.countryId != 6)
-                handleFilter(dataRegion)
+                Array.isArray(data) && handleFilter(dataRegion)
               }else{
                 const {data}= await axios.get(`${address}/api/v1/news/filter?countryId=${countriesfilter[subsectionValue]}`)
-                handleFilter(data)
+                Array.isArray(data) && handleFilter(data)
               }
             }else{
               const {data}= await axios.get(`${address}/api/v1/news/filter?countryId=${countriesfilter[sectionValue]}&categoryId=${categories[subsectionValue]}`)
-              handleFilter(data)
+              Array.isArray(data) && handleFilter(data)
               
             }
             
@@ -152,7 +152,7 @@ const EditContent = () => {
         <DropDownMenu valueSelected={contentType} render={setContentType} chooseSection={contentTypeData} edit={true} title ="Բոլորը"/>
 
     </div>
-    {data && data.map((data,key)=>{
+    {Array.isArray(data) && data.map((data,key)=>{
         if(key>=contentQuantity || key<contentBeginning)return
         if(data.url)return <Link key={key} to={"/admin/edit/live/"+data.id}><LiveContent data={data}/></Link>
        return <Link  key={key} to={"/admin/edit/"+data.id}><FilterContent data={data}/></Link>

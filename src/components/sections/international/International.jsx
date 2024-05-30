@@ -18,7 +18,7 @@ const International = () => {
     (async () => {
       try {
         const {data}= await axios.get(`${address}/api/v1/news/filter?countryId=6`)  
-        setData(data.filter((data)=>data.newsContent.file.isImage))
+        Array.isArray(data) && setData(data.filter((data)=>data.newsContent.file.isImage))
       } catch (error) {
         console.log(error)
       }
@@ -60,7 +60,7 @@ const International = () => {
             <h3 className="international_title">Միջազգային</h3>
             
             <div>
-            {data && data.map((data,key)=>{
+            {Array.isArray(data) && data.map((data,key)=>{
               if(key>=contentQuantity || key<contentBeginning)return
                 return <Link key={key} to={"/news/"+data.id}>
                   <AsideSlice key={key} data={data}/>

@@ -25,7 +25,7 @@ const VeryReadable = () => {
       <div className='very_readables'>
         <h2>Շատ կարդացվող</h2>
           <div className='very_readable_left'>
-            {dataMostWiew && dataMostWiew.map((data,key)=>{
+            {Array.isArray(dataMostWiew) && dataMostWiew.map((data,key)=>{
               if(key>=2)return
               return <Link key={key} to={"/news/"+data.id}><VeryReadableNews data={data}/></Link>
             })}

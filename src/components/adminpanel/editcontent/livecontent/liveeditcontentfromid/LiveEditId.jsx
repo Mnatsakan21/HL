@@ -13,9 +13,11 @@ const LiveEditId = () => {
         (async () => {
             try {
                 const {data} = await axios.get(`${address}/api/v1/live/getAll`) 
-                const dataFilter = data.filter((data)=>data.id == id)[0]
-                setUrl(dataFilter.url)
-                setTitle(dataFilter.title)
+                if(Array.isArray(data)){
+                    const dataFilter = data.filter((data)=>data.id == id)[0]
+                    setUrl(dataFilter.url)
+                    setTitle(dataFilter.title)
+                }
                
             } catch (error) {
                 console.log(error)
@@ -33,7 +35,7 @@ const LiveEditId = () => {
             try {
             const { data } = await axios.put(`${address}/api/v1/live/edit/${id}`,formData)
   
-            console.log(data)
+        
           } catch (error) {
                 console.log(error)
               }

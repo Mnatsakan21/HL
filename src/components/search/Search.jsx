@@ -73,7 +73,7 @@ const Search = () => {
 
         {searchData==0?search && <h2>Արդյունք չի գտնվել</h2>:searchData && 
         <>
-        {searchData && searchData.map((data,key)=>{
+        {Array.isArray(searchData) && searchData.map((data,key)=>{
           if(key>=contentQuantity || key<contentBeginning)return
           return <Link  key={key} to={(data.newsContent?.file.isImage?"/news/":"/videos/")+data.id}>
           <SearchSlice data={data}/>

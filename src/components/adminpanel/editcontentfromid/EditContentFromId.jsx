@@ -122,7 +122,7 @@ const EditContentFromId = () => {
             try {
             const { data } = await axios.put(`${address}/api/v1/news/editNews/${id}`, formData)
   
-            console.log(data)
+       
           } catch (error) {
                 console.log(error)
               }

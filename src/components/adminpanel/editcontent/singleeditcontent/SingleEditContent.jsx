@@ -24,7 +24,7 @@ const SingleEditContent = () => {
     (async () => {
       try {
         const {data} = await axios.delete(`${address}/api/v1/news/delete/${id}`)
-        console.log(data)
+
       } catch (error) {
         console.log(error)
       }
