@@ -17,11 +17,11 @@ const Armenia = () => {
     useEffect(()=>{
       (async () => {
         try {
-          const {data}= await axios.get(`${address}/api/v1/news/filter?countryId=1`) 
-          const politics = await axios.get(`${address}/api/v1/news/filter?countryId=1&categoryId=1`) 
-          const legal = await axios.get(`${address}/api/v1/news/filter?countryId=1&categoryId=2`) 
-          const military = await axios.get(`${address}/api/v1/news/filter?countryId=1&categoryId=3`) 
-          const society = await axios.get(`${address}/api/v1/news/filter?countryId=1&categoryId=4`) 
+          const {data}= await axios.get(`${address}/news/filter?countryId=1`) 
+          const politics = await axios.get(`${address}/news/filter?countryId=1&categoryId=1`) 
+          const legal = await axios.get(`${address}/news/filter?countryId=1&categoryId=2`) 
+          const military = await axios.get(`${address}/news/filter?countryId=1&categoryId=3`) 
+          const society = await axios.get(`${address}/news/filter?countryId=1&categoryId=4`) 
           Array.isArray(data) && setData(data.filter((data)=>data.newsContent.file.isImage))
           Array.isArray(politics.data) && setDataPolitics(politics.data.filter((data)=>data.newsContent.file.isImage))
           Array.isArray(military.data) && setDataMilitary(military.data.filter((data)=>data.newsContent.file.isImage))

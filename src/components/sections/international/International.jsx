@@ -17,7 +17,7 @@ const International = () => {
   useEffect(()=>{
     (async () => {
       try {
-        const {data}= await axios.get(`${address}/api/v1/news/filter?countryId=6`)  
+        const {data}= await axios.get(`${address}/news/filter?countryId=6`)  
         Array.isArray(data) && setData(data.filter((data)=>data.newsContent.file.isImage))
       } catch (error) {
         console.log(error)

@@ -12,7 +12,7 @@ const LiveEditId = () => {
     useEffect(()=>{
         (async () => {
             try {
-                const {data} = await axios.get(`${address}/api/v1/live/getAll`) 
+                const {data} = await axios.get(`${address}/live/getAll`) 
                 if(Array.isArray(data)){
                     const dataFilter = data.filter((data)=>data.id == id)[0]
                     setUrl(dataFilter.url)
@@ -33,7 +33,7 @@ const LiveEditId = () => {
             formData.append('title', title)
         
             try {
-            const { data } = await axios.put(`${address}/api/v1/live/edit/${id}`,formData)
+            const { data } = await axios.put(`${address}/live/edit/${id}`,formData)
   
           } catch (error) {
                 console.log(error)

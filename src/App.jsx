@@ -21,6 +21,7 @@ import SingleEditContent from './components/adminpanel/editcontent/singleeditcon
 import EditContentFromId from './components/adminpanel/editcontentfromid/EditContentFromId'
 import LiveEditContent from './components/adminpanel/editcontent/livecontent/liveeditcontent/LiveEditContent'
 import LiveEditId from './components/adminpanel/editcontent/livecontent/liveeditcontentfromid/LiveEditId'
+import axios from 'axios'
 
 
 

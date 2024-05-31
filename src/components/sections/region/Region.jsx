@@ -15,11 +15,11 @@ const Region = () => {
   useEffect(()=>{
     (async () => {
       try {
-        const {data}= await axios.get(`${address}/api/v1/news/getAll`) 
-        const turkey = await axios.get(`${address}/api/v1/news/filter?countryId=2`) 
-        const georgia = await axios.get(`${address}/api/v1/news/filter?countryId=3`) 
-        const iran = await axios.get(`${address}/api/v1/news/filter?countryId=4`) 
-        const azerbaijan = await axios.get(`${address}/api/v1/news/filter?countryId=5`) 
+        const {data}= await axios.get(`${address}/news/getAll`) 
+        const turkey = await axios.get(`${address}/news/filter?countryId=2`) 
+        const georgia = await axios.get(`${address}/news/filter?countryId=3`) 
+        const iran = await axios.get(`${address}/news/filter?countryId=4`) 
+        const azerbaijan = await axios.get(`${address}/news/filter?countryId=5`) 
         Array.isArray(data) && setData(data.filter((data)=>data.countryId != 1 && data.countryId != 6 && data.newsContent.file.isImage))
         Array.isArray(georgia.data) && setDataGeorgia(georgia.data.filter((data)=>data.newsContent.file.isImage))
         Array.isArray(turkey.data) && setDataTurkey(turkey.data.filter((data)=>data.newsContent.file.isImage))

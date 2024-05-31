@@ -19,7 +19,7 @@ const AdminPanel = () => {
       const refreshToken = localStorage.getItem('refreshToken')
       
       if(accessToken != undefined || refreshToken != undefined ){
-        axios.get('/api/v1/admin/authMe').then(({data}) => {
+        axios.get('/admin/authMe').then(({data}) => {
           localStorage.setItem('accessToken', data.accessToken)
           localStorage.setItem('refreshToken', data.refreshToken)
           setAdminPanel(true)
@@ -29,7 +29,7 @@ const AdminPanel = () => {
     }, [])
     
     function handleClick (){
-        axios.post('/api/v1/admin/login',{
+        axios.post('/admin/login',{
             email: data.login,
             password: data.password
           },

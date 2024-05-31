@@ -19,7 +19,7 @@ export default function Slider() {
     useEffect(()=>{
       (async () => {
         try {
-          const {data}= await axios.get(`${address}/api/v1/news/getToday`)
+          const {data}= await axios.get(`${address}/news/getToday`)
           setDataToday(data)
         } catch (error) {
           console.log(error)

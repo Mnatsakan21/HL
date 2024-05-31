@@ -19,10 +19,10 @@ const Subsection = ({title}) => {
     (async () => {
       try {
         if(location[1] == "armenia"){
-          const {data} = await axios.get(`${address}/api/v1/news/filter?countryId=1&categoryId=${categories[location[2]]}`) 
+          const {data} = await axios.get(`${address}/news/filter?countryId=1&categoryId=${categories[location[2]]}`) 
           setData(data)
         }else{
-          const {data} = await axios.get(`${address}/api/v1/news/filter?countryId=${countriesfilter[location[2]]}`) 
+          const {data} = await axios.get(`${address}/news/filter?countryId=${countriesfilter[location[2]]}`) 
           setData(data)
         }
 

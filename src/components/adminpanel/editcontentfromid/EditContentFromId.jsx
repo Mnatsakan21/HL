@@ -56,7 +56,7 @@ const EditContentFromId = () => {
     useEffect(()=>{
         (async () => {
             try {
-                const {data} = await axios.get(`${address}/api/v1/news/getOne/${id}`)
+                const {data} = await axios.get(`${address}/news/getOne/${id}`)
                 setDataId(data)
                 setRichEditorValue(data.newsContent.description)
                 if(data.countryId == 1 || data.countryId == 6){
@@ -120,7 +120,7 @@ const EditContentFromId = () => {
             }
   
             try {
-            const { data } = await axios.put(`${address}/api/v1/news/editNews/${id}`, formData)
+            const { data } = await axios.put(`${address}/news/editNews/${id}`, formData)
           } catch (error) {
                 console.log(error)
               }

@@ -12,7 +12,7 @@ const VeryReadable = () => {
   useEffect(()=>{
     (async () => {
       try {
-        const {data}= await axios.get(`${address}/api/v1/news/getMostViewed`)
+        const {data}= await axios.get(`${address}/news/getMostViewed`)
         setDataMostWiew(data)
       } catch (error) {
         console.log(error)

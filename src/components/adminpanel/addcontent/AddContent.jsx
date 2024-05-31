@@ -62,7 +62,7 @@ const AddContent = () => {
           formData.append('title', liveTitleRef.current.value)
           
           try {
-            const  data = await axios.post(`${address}/api/v1/live/create`, formData)
+            const  data = await axios.post(`${address}/live/create`, formData)
             
           } catch (error) {
             console.log(error)
@@ -102,7 +102,7 @@ const AddContent = () => {
             }
           
           try {
-            const { data } = await axios.post(`${address}/api/v1/news/create`, formData, 
+            const { data } = await axios.post(`${address}/news/create`, formData, 
             {headers: { 
               Authorization: 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQURNSU4iLCJpZCI6NSwiaWF0IjoxNzA5NzQ1NDY4LCJleHAiOjE3MDk3NDYzNjh9.kHe_YFYmvsHma1eNunFQnx4W-6-uZch-kpkRRVtaO30',
             }})

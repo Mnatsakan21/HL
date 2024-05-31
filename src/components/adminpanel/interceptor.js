@@ -23,7 +23,7 @@ instance.interceptors.response.use(
             if (error?.response?.status === 401 && !config?.sent) { 
                 config.sent = true; 
                 
-                const {data} = await axios.get(address+'/api/v1/admin/refresh', {
+                const {data} = await axios.get(address+'/admin/refresh', {
                     params: {
                         refreshToken: localStorage.getItem('refreshToken')
                     } 

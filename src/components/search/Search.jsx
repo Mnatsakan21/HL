@@ -21,7 +21,7 @@ const Search = () => {
         (async () => {
             try { 
                 if(search == "")return
-          const {data} = await axios.get(`${address}/api/v1/news/search?search=${search}`)
+          const {data} = await axios.get(`${address}/news/search?search=${search}`)
           setCurrentPage(1)
           setContentBegining(0)
           setContentQuantity(6)

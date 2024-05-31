@@ -11,7 +11,7 @@ const LiveEditContent = () => {
   useEffect(()=>{
     (async () => {
       try {
-        const {data} = await axios.get(`${address}/api/v1/live/getAll`)
+        const {data} = await axios.get(`${address}/live/getAll`)
         Array.isArray(data) && setDataId(data.filter((data)=>data.id == id)[0])
       } catch (error) {
         console.log(error)
@@ -22,7 +22,7 @@ const LiveEditContent = () => {
   function handleDelete(){
     (async () => {
       try {
-        const {data} = await axios.delete(`${address}/api/v1/live/delete/${id}`)
+        const {data} = await axios.delete(`${address}/live/delete/${id}`)
       } catch (error) {
         console.log(error)
       }

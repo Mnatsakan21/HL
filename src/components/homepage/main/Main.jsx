@@ -16,7 +16,7 @@ const Main = () => {
     (async () => {
       try {
 
-        const {data}= await axios.get(`${address}/api/v1/news/getAll`)
+        const {data}= await axios.get(`${address}/news/getAll`)
         Array.isArray(data) && setAllNews(data.filter((data)=>data.newsContent.file.isImage))
 
       } catch (error) {

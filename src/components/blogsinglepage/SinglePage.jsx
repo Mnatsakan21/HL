@@ -14,8 +14,8 @@ const SinglePage = () => {
   useEffect(()=>{
     (async () => {
       try {
-        const {data} = await axios.get(`${address}/api/v1/news/getOne/${id}`)
-        const {data:{mostViewedNews,relatesNews}} = await axios.get(`${address}/api/v1/news/getMostViewedAndRelates/${data.categoryId?data.categoryId:1}`)
+        const {data} = await axios.get(`${address}/news/getOne/${id}`)
+        const {data:{mostViewedNews,relatesNews}} = await axios.get(`${address}/news/getMostViewedAndRelates/${data.categoryId?data.categoryId:1}`)
         setMostViewedNews(mostViewedNews)
         setRelatesNews(relatesNews)
         setDataId(data)

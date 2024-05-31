@@ -10,7 +10,7 @@ const Watch = () => {
     useEffect(()=>{
       (async () => {
         try {
-          const {data}= await axios.get(`${address}/api/v1/news/getAll`)
+          const {data}= await axios.get(`${address}/news/getAll`)
           Array.isArray(data) && setDataWatch(data.filter((data)=>!data.newsContent.file.isImage && data))
         } catch (error) {
           console.log(error)

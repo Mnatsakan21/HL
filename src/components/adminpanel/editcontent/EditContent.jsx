@@ -69,29 +69,29 @@ const EditContent = () => {
     useEffect(()=>{
       if(!id){
         (async () => {
-          const lives = await axios.get(`${address}/api/v1/live/getAll`)
+          const lives = await axios.get(`${address}/live/getAll`)
           try {
             if(sectionValue == 'all' && subsectionValue == "all") {
-              const {data}= await axios.get(`${address}/api/v1/news/getAll`)
+              const {data}= await axios.get(`${address}/news/getAll`)
               Array.isArray(data) && handleFilter(data.concat(lives.data))
               
             }else if(sectionValue == 'international'){
-              const {data}= await axios.get(`${address}/api/v1/news/filter?countryId=6`)
+              const {data}= await axios.get(`${address}/news/filter?countryId=6`)
               Array.isArray(data) && handleFilter(data)
             }else if(sectionValue == 'armenia' && subsectionValue == "all"){
-              const {data}= await axios.get(`${address}/api/v1/news/filter?countryId=1`)
+              const {data}= await axios.get(`${address}/news/filter?countryId=1`)
               Array.isArray(data) &&  handleFilter(data)
             }else if(sectionValue == "region"){
               if(subsectionValue == "all"){
-                const {data}= await axios.get(`${address}/api/v1/news/getAll`)
+                const {data}= await axios.get(`${address}/news/getAll`)
                 const dataRegion = data.filter((data)=>data.countryId != 1 && data.countryId != 6)
                 Array.isArray(dataRegion) &&  handleFilter(dataRegion)
               }else{
-                const {data}= await axios.get(`${address}/api/v1/news/filter?countryId=${countriesfilter[subsectionValue]}`)
+                const {data}= await axios.get(`${address}/news/filter?countryId=${countriesfilter[subsectionValue]}`)
                 Array.isArray(data) &&  handleFilter(data)
               }
             }else{
-              const {data}= await axios.get(`${address}/api/v1/news/filter?countryId=${countriesfilter[sectionValue]}&categoryId=${categories[subsectionValue]}`)
+              const {data}= await axios.get(`${address}/news/filter?countryId=${countriesfilter[sectionValue]}&categoryId=${categories[subsectionValue]}`)
               Array.isArray(data) && handleFilter(data)
               
             }
