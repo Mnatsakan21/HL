@@ -15,11 +15,17 @@ const AdminPanel = () => {
     }
 
     useEffect(() => {
-      axios.get('/api/v1/admin/authMe').then(({data}) => {
-        localStorage.setItem('accessToken', data.accessToken)
-        localStorage.setItem('refreshToken', data.refreshToken)
-        setAdminPanel(true)
-      })
+      const accessToken = localStorage.getItem('accessToken')
+      const refreshToken = localStorage.getItem('refreshToken')
+      
+      if(accessToken != undefined || refreshToken != undefined ){
+        axios.get('/api/v1/admin/authMe').then(({data}) => {
+          localStorage.setItem('accessToken', data.accessToken)
+          localStorage.setItem('refreshToken', data.refreshToken)
+          setAdminPanel(true)
+        })
+
+      }
     }, [])
     
     function handleClick (){
