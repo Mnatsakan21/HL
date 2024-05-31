@@ -1,5 +1,6 @@
 export const address = "http://165.232.65.191/service"
 
+
 export const dates = {
     '01': 'Հնվ',
     '02': 'Փտր',

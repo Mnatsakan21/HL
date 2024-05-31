@@ -106,7 +106,6 @@ const AddContent = () => {
             {headers: { 
               Authorization: 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQURNSU4iLCJpZCI6NSwiaWF0IjoxNzA5NzQ1NDY4LCJleHAiOjE3MDk3NDYzNjh9.kHe_YFYmvsHma1eNunFQnx4W-6-uZch-kpkRRVtaO30',
             }})
-            
           } catch (error) {
             console.log(error)
           }
