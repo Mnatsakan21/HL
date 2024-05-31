@@ -2,7 +2,7 @@ import './veryreadablenews.style.scss'
 import {address,handleDate} from '../../../../repetitiveVariables/variables'
 
 
-const VeryReadableNews = ({data:{createdAt,title,description,img}}) => {
+const VeryReadableNews = ({data:{createdAt,title = "",description = "",img}}) => {
   return (
     <div className='readable_news'>
       <img src={address+"/"+img} alt="Լրատվական նկար"/>

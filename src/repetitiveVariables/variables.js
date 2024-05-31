@@ -1,4 +1,5 @@
-export const address = "http://165.232.65.191/service"
+export const address = "https://hetakhuyz.am/service"
+
 
 
 export const dates = {

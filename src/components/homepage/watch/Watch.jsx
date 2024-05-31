@@ -24,7 +24,7 @@ const Watch = () => {
         <div className="watch_clip">
           {Array.isArray(dataWatch) && dataWatch.map((data,key)=>{
             if(key>=2)return
-            return <Link key={key} to={"videos/"+data.id}><WatchClip data={data}/></Link>    
+            return <Link key={key} to={"videos/"+data.id}><WatchClip data={data && data}/></Link>    
             })}            
         </div>    
     </section>

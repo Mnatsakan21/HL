@@ -155,7 +155,7 @@ const EditContent = () => {
     {Array.isArray(data) && data.map((data,key)=>{
         if(key>=contentQuantity || key<contentBeginning)return
         if(data.url)return <Link key={key} to={"/admin/edit/live/"+data.id}><LiveContent data={data}/></Link>
-       return <Link  key={key} to={"/admin/edit/"+data.id}><FilterContent data={data}/></Link>
+       return <Link  key={key} to={"/admin/edit/"+data.id}><FilterContent data={data &&data}/></Link>
     })}
     <div className="flex_container">
         

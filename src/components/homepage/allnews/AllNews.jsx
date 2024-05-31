@@ -5,7 +5,7 @@ import { Link, useLocation } from "react-router-dom"
 
 
 
-const AllNews = ({title,data=[]}) => {
+const AllNews = ({title = "",data=[]}) => {
     const [quantity,setQuantity] = useState(5)
     const {pathname} = useLocation()
 
@@ -25,7 +25,7 @@ const AllNews = ({title,data=[]}) => {
         <div>
             {Array.isArray(data) && data.map((data,key)=>{
                 if(quantity<key) return
-                return <Link key={key} to={"/news/"+data.id}><NewsContainer data={data}/></Link>
+                return <Link key={key} to={"/news/"+data.id}><NewsContainer data={data && data}/></Link>
             })}
         </div>
         

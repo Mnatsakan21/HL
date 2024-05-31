@@ -20,7 +20,7 @@ const LiveContent = ({data}) => {
                <p>Ուղիղ եթեր</p>
             </div>
         </div>
-        <h3>{data.title}</h3>
+        <h3>{data?.title}</h3>
       </div>
       </div>
     </div>
