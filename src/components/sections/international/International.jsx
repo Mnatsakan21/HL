@@ -18,7 +18,7 @@ const International = () => {
     (async () => {
       try {
         const {data}= await axios.get(`${address}/news/filter?countryId=6`)  
-        Array.isArray(data) && setData(data.filter((data)=>data.newsContent.file.isImage))
+        setData(data.filter((data)=>data.newsContent.file.isImage))
       } catch (error) {
         console.log(error)
       }
